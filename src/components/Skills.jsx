@@ -1,10 +1,10 @@
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
 import {
-  SiFlutter, SiDart, SiOpenai, SiReact, SiBootstrap,
-  SiN8N, SiPython
+  SiFlutter, SiDart, SiPython
 } from 'react-icons/si';
-import { FiCpu, FiGlobe, FiSmartphone } from 'react-icons/fi';
+import { FiSmartphone } from 'react-icons/fi';
+import { FaRobot } from 'react-icons/fa';
 
 /**
  * Skills section – three cards: Mobile Dev, AI & Automation, Web Dev.
@@ -14,6 +14,7 @@ const CATEGORIES = [
     icon: <FiSmartphone size={28} />,
     title: 'Mobile Development',
     color: '#00b4ff',
+    description: 'Crafting high-performance, pixel-perfect Android & iOS applications from concept to App Store.',
     skills: [
       { icon: <SiFlutter size={22} />, name: 'Flutter', level: 90 },
       { icon: <SiDart size={22} />,    name: 'Dart',    level: 88 },
@@ -21,25 +22,16 @@ const CATEGORIES = [
     tags: ['Android', 'iOS', 'State Management', 'REST APIs', 'Firebase'],
   },
   {
-    icon: <FiCpu size={28} />,
-    title: 'AI & Automation',
+    icon: <FaRobot size={28} />,
+    title: 'AI Automation',
     color: '#a855f7',
+    description: 'Building intelligent multi-agent systems and automation pipelines using modern AI frameworks.',
     skills: [
-      { icon: <SiN8N size={22} />,   name: 'n8n',              level: 85 },
-      { icon: <SiOpenai size={22} />, name: 'OpenAI SDK',       level: 82 },
-      { icon: <SiPython size={22} />, name: 'CrewAI / AutoGen', level: 75 },
+      { icon: <SiPython size={22} />, name: 'AutoGen',   level: 85 },
+      { icon: <SiPython size={22} />, name: 'LangGraph', level: 82 },
+      { icon: <SiPython size={22} />, name: 'CrewAI',    level: 80 },
     ],
-    tags: ['Generative AI', 'LLM Pipelines', 'AI Agents', 'Automation Workflows'],
-  },
-  {
-    icon: <FiGlobe size={28} />,
-    title: 'Web Development',
-    color: '#10b981',
-    skills: [
-      { icon: <SiReact size={22} />,     name: 'React.js',     level: 78 },
-      { icon: <SiBootstrap size={22} />, name: 'Bootstrap',    level: 82 },
-    ],
-    tags: ['HTML/CSS', 'JavaScript', 'Data Scraping', 'REST APIs'],
+    tags: ['Generative AI', 'LLM Pipelines', 'Multi-Agent', 'Python'],
   },
 ];
 
@@ -69,14 +61,13 @@ function Skills() {
 
         .skills-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 1.5rem;
-          max-width: 1100px;
+          max-width: 900px;
           margin: 0 auto;
           padding: 0 1.5rem;
         }
-        @media (max-width: 992px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 620px) { .skills-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .skills-grid { grid-template-columns: 1fr; } }
 
         .skill-card {
           background: var(--bg-card);
@@ -107,6 +98,12 @@ function Skills() {
           font-size: 1.1rem;
           font-weight: 700;
           margin: 0;
+        }
+        .skill-card-desc {
+          font-size: 0.85rem;
+          color: var(--text-secondary);
+          line-height: 1.5;
+          margin-bottom: 1.25rem;
         }
 
         /* Skill progress bars */
@@ -169,7 +166,7 @@ function Skills() {
           </div>
 
           <div className="skills-grid">
-            {CATEGORIES.map(({ icon, title, color, skills, tags }, i) => (
+            {CATEGORIES.map(({ icon, title, color, description, skills, tags }, i) => (
               <div
                 className={`skill-card reveal delay-${i + 1}`}
                 key={title}
@@ -192,6 +189,7 @@ function Skills() {
                   </div>
                   <h3 className="skill-card-title">{title}</h3>
                 </div>
+                {description && <p className="skill-card-desc">{description}</p>}
 
                 {skills.map((s) => (
                   <SkillBar key={s.name} {...s} color={color} />

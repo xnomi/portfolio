@@ -7,9 +7,10 @@ import { SiUpwork, SiFiverr } from 'react-icons/si';
  * CTA buttons, and an animated gradient background blob.
  */
 const ROLES = [
-  'Flutter Developer',
-  'AI Agent Developer',
-  'Web Enthusiast',
+  'Freelance Full Stack Developer',
+  'AI Automation Expert',
+  'React Developer',
+  'LangGraph & CrewAI Developer',
 ];
 
 function Hero() {

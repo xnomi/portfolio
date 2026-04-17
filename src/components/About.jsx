@@ -164,7 +164,7 @@ function About() {
               <div className="about-avatar-wrap">
                 <div className="about-avatar-ring" />
                 <div className="about-avatar">
-                  <img src="/images/profile_photo.png" alt="Muhammad Noman Ashraf" loading="lazy" />
+                  <img src="/images/profile_photo.png" alt="Muhammad Noman Ashraf - Freelance Full Stack Developer & AI Automation Expert" loading="lazy" />
                 </div>
               </div>
 
@@ -186,15 +186,15 @@ function About() {
               </h3>
 
               <p>
-                I'm a passionate <strong style={{ color: 'var(--text-primary)' }}>Flutter Developer</strong> with over
-                2 years of hands-on experience crafting high-performance, pixel-perfect Android & iOS applications — from
-                concept to App Store.
+                I'm a passionate <strong style={{ color: 'var(--text-primary)' }}>freelance full stack developer</strong> and mobile app builder with over
+                2 years of hands-on experience crafting high-performance applications — from
+                concept to deployment. Whether you want to <strong style={{ color: 'var(--text-primary)' }}>hire React developer</strong> for your next web platform or need a pixel-perfect mobile app, I've got you covered.
               </p>
 
               <p>
-                Beyond mobile, I specialise in <strong style={{ color: 'var(--text-primary)' }}>AI Agent development</strong>{' '}
-                — building intelligent automation pipelines using n8n, the OpenAI SDK, CrewAI, and AutoGen. I love making
-                complex workflows simple and powerful.
+                Beyond traditional development, I am an <strong style={{ color: 'var(--text-primary)' }}>AI automation expert</strong> and <strong style={{ color: 'var(--text-primary)' }}>LangGraph & CrewAI developer</strong>{' '}
+                — building intelligent multi-agent automation pipelines using n8n, the OpenAI SDK, CrewAI, AutoGen, and LangGraph. I love making
+                complex workflows simple, powerful, and autonomous.
               </p>
 
               <p>
