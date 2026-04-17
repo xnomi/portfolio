@@ -1,43 +1,50 @@
 /* =========================================
-   CSS Design System – Dark Blue Theme
+   CSS Design System — Premium Dark Purple/Cyan
    ========================================= */
 :root {
   /* Backgrounds */
-  --bg-primary:    #07070f;
-  --bg-secondary:  #0d0d1a;
-  --bg-card:       #111126;
-  --bg-card-hover: #161630;
+  --bg-primary:    #0a0a0f;
+  --bg-secondary:  #0f0f1a;
+  --bg-card:       rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --bg-glass:      rgba(15, 15, 26, 0.7);
 
-  /* Accent – Electric Blue */
-  --accent:        #00b4ff;
-  --accent-dark:   #0086cc;
-  --accent-glow:   rgba(0, 180, 255, 0.18);
-  --accent-glow2:  rgba(0, 180, 255, 0.08);
+  /* Accent — Purple → Cyan */
+  --accent-purple:  #7c3aed;
+  --accent-cyan:    #06b6d4;
+  --accent:         #06b6d4;
+  --accent-dark:    #0891b2;
+  --accent-glow:    rgba(124, 58, 237, 0.22);
+  --accent-glow2:   rgba(124, 58, 237, 0.08);
+  --cyan-glow:      rgba(6, 182, 212, 0.18);
 
   /* Text */
-  --text-primary:  #e8eaf6;
-  --text-secondary:#a8b2d8;
-  --text-muted:    #5a6582;
+  --text-primary:   #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
 
   /* Borders */
-  --border:        rgba(0, 180, 255, 0.12);
-  --border-hover:  rgba(0, 180, 255, 0.45);
+  --border:         rgba(124, 58, 237, 0.15);
+  --border-hover:   rgba(6, 182, 212, 0.45);
 
-  /* Gradient */
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,180,255,0.14) 0%, transparent 70%);
-  --gradient-accent: linear-gradient(135deg, #00b4ff 0%, #0066ff 100%);
+  /* Gradients */
+  --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+  --gradient-accent-r: linear-gradient(135deg, #06b6d4 0%, #7c3aed 100%);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.18) 0%, transparent 70%);
+  --gradient-text: linear-gradient(135deg, #a78bfa 0%, #06b6d4 100%);
 
-  /* Font */
-  --font-body:     'Inter', sans-serif;
-  --font-heading:  'Space Grotesk', sans-serif;
+  /* Fonts */
+  --font-body:    'Inter', sans-serif;
+  --font-heading: 'Space Grotesk', 'Inter', sans-serif;
 
-  /* Spacing / radius */
-  --radius-sm:   6px;
-  --radius-md:   12px;
-  --radius-lg:   20px;
+  /* Radius */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   22px;
+  --radius-xl:   32px;
   --radius-full: 999px;
 
   /* Transitions */
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition:      0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
