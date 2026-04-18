@@ -121,6 +121,24 @@
   border-bottom-left-radius: 5px;
 }
 
+.message.assistant p {
+  margin-bottom: 8px;
+}
+.message.assistant p:last-child {
+  margin-bottom: 0;
+}
+.message.assistant ul, .message.assistant ol {
+  margin-left: 20px;
+  margin-bottom: 8px;
+}
+.message.assistant strong {
+  color: #fff;
+}
+.message.assistant a {
+  color: #06b6d4;
+  text-decoration: underline;
+}
+
 .message-loading {
   display: flex;
   gap: 5px;

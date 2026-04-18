@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaRobot, FaTimes, FaPaperPlane } from 'react-icons/fa';
+import ReactMarkdown from 'react-markdown';
 import './Chatbot.css';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Hi! I am Noman\'s AI assistant. Feel free to ask me anything about his skills, experience, or projects. If you want to get in touch, just leave your contact details!' }
+    { role: 'assistant', content: 'Hi! I am Noman Ashraf. Feel free to ask me anything about my skills, experience, or projects. If you want to get in touch, just leave your contact details!' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -71,7 +72,7 @@ const Chatbot = () => {
       {isOpen && (
         <div className="chatbot-window">
           <div className="chatbot-header">
-            <h3><FaRobot /> AI Assistant</h3>
+            <h3><FaRobot /> Chat with Noman</h3>
             <button onClick={() => setIsOpen(false)}>
               <FaTimes />
             </button>
@@ -80,7 +81,11 @@ const Chatbot = () => {
           <div className="chatbot-messages">
             {messages.map((msg, index) => (
               <div key={index} className={`message ${msg.role}`}>
-                {msg.content}
+                {msg.role === 'assistant' ? (
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                ) : (
+                  msg.content
+                )}
               </div>
             ))}
             {isLoading && (

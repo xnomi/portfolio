@@ -156,3 +156,31 @@ section {
   font-weight: 600;
   padding: 3px 11px;
 }
+
+/* =========================================
+   Global Mobile Responsiveness
+   ========================================= */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 60px;
+  }
+  
+  section {
+    padding: 70px 0;
+  }
+
+  body {
+    font-size: 15px;
+  }
+  
+  .btn-accent, .btn-outline {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 60px 0;
+  }
+}

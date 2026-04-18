@@ -228,6 +228,19 @@ function Hero() {
           transition: color var(--transition);
         }
         .hero-scroll:hover { color: #a78bfa; }
+
+        @media (max-width: 768px) {
+          #hero {
+            padding: 100px 1rem 60px;
+          }
+          .hero-blob-1 { width: 400px; height: 400px; top: -100px; }
+          .hero-blob-2 { width: 300px; height: 300px; bottom: -40px; right: -50px; }
+          .hero-blob-3 { width: 250px; height: 250px; bottom: 50px; left: -40px; }
+          .hero-name { letter-spacing: -1px; }
+          .hero-cta { flex-direction: column; gap: 0.75rem; width: 100%; max-width: 300px; margin: 0 auto 2.5rem; }
+          .hero-cta button, .hero-cta a { width: 100%; justify-content: center; }
+          .hero-socials { flex-wrap: wrap; }
+        }
       `}</style>
 
       <section id="hero">
