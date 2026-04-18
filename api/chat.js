@@ -1,31 +1,11 @@
-import fs from 'fs';
-import path from 'path';
-import pdfParse from 'pdf-parse';
 import { OpenAI } from 'openai';
 import axios from 'axios';
+import { cvText } from './cvData.js';
 
 const openai = new OpenAI({
   apiKey: process.env.DEEPSEEK_API_KEY,
   baseURL: 'https://api.deepseek.com/v1',
 });
-
-let cvText = '';
-
-// Load and parse PDF
-const loadCV = async () => {
-  if (cvText) return cvText; // Return cached text if available
-  try {
-    const pdfPath = path.join(process.cwd(), 'public', 'doc', 'Noman Ashraf SE-AI.pdf');
-    const dataBuffer = fs.readFileSync(pdfPath);
-    const data = await pdfParse(dataBuffer);
-    cvText = data.text;
-    console.log('CV successfully loaded and parsed.');
-    return cvText;
-  } catch (err) {
-    console.error('Error reading CV PDF:', err.message);
-    return '';
-  }
-};
 
 const sendPushNotification = async (message) => {
   try {
@@ -48,14 +28,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    const cvContent = await loadCV();
-    
     const SYSTEM_PROMPT = `You are a helpful and professional AI assistant for Noman Ashraf's portfolio website. 
 Your primary job is to answer visitors' questions using ONLY the information found in Noman's CV provided below.
 
 Noman's CV:
 ---
-${cvContent}
+${cvText}
 ---
 
 Rules:
