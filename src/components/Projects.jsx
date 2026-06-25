@@ -320,11 +320,20 @@ function ProjectCard({ image, emoji, title, description, tags, links, featured, 
 function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [videoSrc, setVideoSrc] = useState(null);
+  const [showAll, setShowAll] = useState(false);
+
+  // Reset showAll when switching categories to avoid layout confusion
+  const handleCategoryChange = (catId) => {
+    setSelectedCategory(catId);
+    setShowAll(false);
+  };
 
   const filteredProjects = PROJECTS.filter((p) => {
     if (selectedCategory === 'all') return true;
     return p.category === selectedCategory;
   });
+
+  const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, 7);
 
   return (
     <>
@@ -641,7 +650,7 @@ function Projects() {
               <button
                 key={cat.id}
                 className={`tab-btn ${selectedCategory === cat.id ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat.id)}
+                onClick={() => handleCategoryChange(cat.id)}
               >
                 {cat.label}
               </button>
@@ -649,7 +658,7 @@ function Projects() {
           </div>
 
           <div className="bento-grid">
-            {filteredProjects.map((p, i) => (
+            {visibleProjects.map((p, i) => (
               <div
                 key={p.title}
                 className={`project-card-wrap${p.span === 2 ? ' project-card-wide' : ''}`}
@@ -658,6 +667,18 @@ function Projects() {
               </div>
             ))}
           </div>
+
+          {filteredProjects.length > 7 && (
+            <div className="projects-view-more reveal" style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <button
+                className="btn-accent"
+                onClick={() => setShowAll(!showAll)}
+                style={{ cursor: 'pointer', border: 'none' }}
+              >
+                {showAll ? 'Show Less Projects' : 'View More Projects'}
+              </button>
+            </div>
+          )}
 
           <div className="projects-cta reveal">
             <a
