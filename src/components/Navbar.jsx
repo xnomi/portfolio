@@ -216,6 +216,14 @@ function Navbar({ activeSection }) {
             </li>
             <li>
               <a
+                href="/doc/Noman Ashraf SE-AI.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="nav-blog-link"
+              >Resume</a>
+            </li>
+            <li>
+              <a
                 href="https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share"
                 target="_blank"
                 rel="noreferrer"
@@ -243,6 +251,12 @@ function Navbar({ activeSection }) {
           >{label}</button>
         ))}
         <Link to="/blog" onClick={() => setOpen(false)}>Blog</Link>
+        <a
+          href="/doc/Noman Ashraf SE-AI.pdf"
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => setOpen(false)}
+        >Resume</a>
         <a
           href="https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share"
           target="_blank"

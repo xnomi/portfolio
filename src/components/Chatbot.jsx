@@ -62,7 +62,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="chatbot-container">
+    <div className={`chatbot-container${isOpen ? ' open' : ''}`}>
       {!isOpen && (
         <button className="chatbot-toggle-btn" onClick={() => setIsOpen(true)}>
           <FaRobot />

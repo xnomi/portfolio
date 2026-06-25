@@ -1,36 +1,61 @@
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
-import { SiFlutter, SiDart, SiPython } from 'react-icons/si';
-import { FiSmartphone } from 'react-icons/fi';
-import { FaRobot } from 'react-icons/fa';
+import { SiFlutter, SiDart, SiPython, SiReact } from 'react-icons/si';
+import { FiSmartphone, FiServer, FiCpu } from 'react-icons/fi';
+import { FaRobot, FaBrain } from 'react-icons/fa';
 
 const CATEGORIES = [
   {
     icon: <FiSmartphone size={26} />,
-    title: 'Mobile Development',
+    title: 'Mobile & Frontend Development',
     color: '#06b6d4',
     gradientFrom: 'rgba(6,182,212,0.15)',
     gradientTo: 'rgba(6,182,212,0.03)',
-    description: 'Crafting high-performance, pixel-perfect Android & iOS applications from concept to App Store.',
+    description: 'Crafting responsive mobile applications and highly interactive, performant web frontends with premium UI/UX.',
     skills: [
-      { icon: <SiFlutter size={20} />, name: 'Flutter', level: 90 },
-      { icon: <SiDart size={20} />,    name: 'Dart',    level: 88 },
+      { icon: <SiFlutter size={20} />, name: 'Flutter (iOS/Android)', level: 90 },
+      { icon: <SiReact size={20} />,   name: 'React.js / Web',   level: 88 },
     ],
-    tags: ['Android', 'iOS', 'State Management', 'REST APIs', 'Firebase', 'App Store'],
+    tags: ['Flutter & Dart', 'React.js', 'State Management (Provider/Redux)', 'TailwindCSS', 'REST & GraphQL APIs', 'App Store Publishing'],
+  },
+  {
+    icon: <FiServer size={26} />,
+    title: 'Backend & Cloud Architecture',
+    color: '#10b981',
+    gradientFrom: 'rgba(16,185,129,0.15)',
+    gradientTo: 'rgba(16,185,129,0.03)',
+    description: 'Designing secure, fast, and scalable backend servers, custom APIs, and robust relational & NoSQL databases.',
+    skills: [
+      { icon: <SiPython size={20} />, name: 'Python / Node.js', level: 88 },
+      { icon: <FiServer size={20} />, name: 'Databases (SQL/NoSQL)', level: 85 },
+    ],
+    tags: ['FastAPI', 'Node.js (Express)', 'PostgreSQL / MySQL', 'Redis', 'MongoDB', 'Firebase / Supabase', 'Docker', 'AWS (EC2/S3)'],
   },
   {
     icon: <FaRobot size={26} />,
-    title: 'AI Automation',
+    title: 'Agentic AI & LLMs',
     color: '#a78bfa',
     gradientFrom: 'rgba(124,58,237,0.15)',
     gradientTo: 'rgba(124,58,237,0.03)',
-    description: 'Building intelligent multi-agent systems and automation pipelines using modern AI frameworks.',
+    description: 'Engineering multi-agent frameworks, advanced LangGraph state charts, and custom LLM execution pipelines.',
     skills: [
-      { icon: <SiPython size={20} />, name: 'AutoGen',   level: 85 },
-      { icon: <SiPython size={20} />, name: 'LangGraph', level: 82 },
-      { icon: <SiPython size={20} />, name: 'CrewAI',    level: 80 },
+      { icon: <FaBrain size={20} />,   name: 'CrewAI / AutoGen', level: 90 },
+      { icon: <FiCpu size={20} />,     name: 'LangGraph Systems', level: 86 },
     ],
-    tags: ['AutoGen', 'LangGraph', 'CrewAI', 'LLM Pipelines', 'Multi-Agent', 'Python'],
+    tags: ['Multi-Agent Coordination', 'LangGraph State Charts', 'Custom LLM Pipelines', 'RAG / Vector Databases', 'LangSmith Monitoring'],
+  },
+  {
+    icon: <FiCpu size={26} />,
+    title: 'n8n Workflow Automation',
+    color: '#f59e0b',
+    gradientFrom: 'rgba(245,158,11,0.15)',
+    gradientTo: 'rgba(245,158,11,0.03)',
+    description: 'Building automated data synchronizations, webhook listeners, Slack/Telegram bots, and cron pipelines.',
+    skills: [
+      { icon: <FiCpu size={20} />,     name: 'n8n Integrations', level: 92 },
+      { icon: <FiCpu size={20} />,     name: 'API Synchronizations', level: 88 },
+    ],
+    tags: ['Gmail/Drive Automations', 'Slack/Telegram Bots', 'Webhook Triggers', 'OAuth2 Auth', 'Error Handling Workflows', 'Audit Logging'],
   },
 ];
 
@@ -62,7 +87,7 @@ function Skills() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 1.75rem;
-          max-width: 900px;
+          max-width: 1050px;
           margin: 0 auto;
           padding: 0 1.5rem;
         }

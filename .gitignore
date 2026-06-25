@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .env
+
+# Large Assets
+/public/videos/job-search-agent.mp4

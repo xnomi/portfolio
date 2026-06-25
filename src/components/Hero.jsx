@@ -286,6 +286,15 @@ function Hero() {
               View Projects
             </button>
             <a
+              href="/doc/Noman Ashraf SE-AI.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-outline"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+            >
+              View Resume
+            </a>
+            <a
               href="https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share"
               target="_blank"
               rel="noreferrer"

@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
-import { FiCode, FiBriefcase, FiStar } from 'react-icons/fi';
+import { FiCode, FiBriefcase, FiStar, FiDownload } from 'react-icons/fi';
 
 const STATS = [
   { icon: <FiCode />, value: '2+', label: 'Years Experience' },
@@ -230,6 +230,18 @@ function About() {
                 {BADGES.map((b) => (
                   <span className="about-badge" key={b}>{b}</span>
                 ))}
+              </div>
+
+              <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'inherit' }}>
+                <a
+                  href="/doc/Noman Ashraf SE-AI.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-accent"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <FiDownload size={16} /> Download CV (PDF)
+                </a>
               </div>
             </div>
           </div>
