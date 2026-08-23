@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import SectionTitle from './ui/SectionTitle';
-import { FiExternalLink, FiGithub, FiPlay, FiX } from 'react-icons/fi';
+import { FiGithub, FiPlay, FiX, FiArrowRight } from 'react-icons/fi';
 import { SiUpwork, SiFiverr } from 'react-icons/si';
 
 const CATEGORIES = [
   { id: 'all', label: 'All Projects' },
-  { id: 'mobile', label: 'Mobile Apps (Flutter)' },
   { id: 'ai-agents', label: 'AI Agents (LangGraph/CrewAI)' },
-  { id: 'automation', label: 'n8n Automations' }
+  { id: 'automation', label: 'n8n Automations' },
+  { id: 'mobile', label: 'Mobile & Web Apps' },
 ];
 
 const PROJECTS = [
   {
     image: '/images/workflow-customer-support.png',
     title: 'AI-Driven Customer Support Triage (n8n)',
-    description: 'An advanced multi-agent customer support workflow. Ingests incoming tickets, automatically classifies intent and urgency with LLMs, retrieves relevant matching documentation from a Vector DB, drafts responses, and routes high-urgency tasks to human agents via Slack with pre-filled drafts.',
+    description: 'An advanced multi-agent customer support workflow. Ingests incoming tickets, automatically classifies intent and urgency with LLMs, retrieves relevant documentation from a Vector DB, drafts responses, and routes high-urgency tasks to human agents via Slack with pre-filled drafts.',
     tags: ['n8n', 'Vector DB', 'LLM Classifier', 'Slack API', 'Customer Support'],
     category: 'automation',
     featured: true,
@@ -26,7 +26,7 @@ const PROJECTS = [
   {
     image: '/images/langgraph-job-search-1.png',
     title: 'Autonomous Job Search Agent (LangGraph)',
-    description: 'A multi-stage LangGraph agent designed to completely automate the job application funnel. Reads profile details, scrapes and searches active job boards, calculates cosine similarity against a vector database of my experience, drafts customized cover letters, and sends formatted listings to a dedicated Slack channel.',
+    description: 'A multi-stage LangGraph agent designed to completely automate the job application funnel. Reads profile details, scrapes active job boards, calculates cosine similarity against a vector database of my experience, drafts customized cover letters, and sends formatted listings to a Slack channel.',
     tags: ['LangGraph', 'Python', 'Vector DB', 'Slack API', 'Agentic AI'],
     category: 'ai-agents',
     video: '/videos/job-search-agent.mp4',
@@ -40,13 +40,13 @@ const PROJECTS = [
     image: '/images/app-scanova.png',
     title: 'Scanova – AI Image Scanner',
     description: 'AI-powered image recognition mobile app. Users scan, automatically categorize, and chat contextually about any photo. Features a smart gallery, real-time AI Q&A, and interactive category exploration.',
-    tags: ['Flutter', 'AI / OpenAI', 'Dart', 'Firebase'],
+    tags: ['Flutter', 'OpenAI SDK', 'Dart', 'Firebase'],
     category: 'mobile',
     featured: true,
     span: 1,
     links: [
       { href: 'https://github.com/NomiDevx/Scanova-imageDetection', label: 'GitHub', icon: <FiGithub size={13} /> },
-      { href: 'https://www.fiverr.com/s/DBvdoDa', label: 'Hire Me', primary: true, icon: <SiFiverr size={13} /> },
+      { href: 'https://www.fiverr.com/s/DBvdoDa', label: 'Fiverr', primary: true, icon: <SiFiverr size={13} /> },
     ],
   },
   {
@@ -160,7 +160,7 @@ const PROJECTS = [
   {
     image: '/images/workflow-twitter-slack.png',
     title: 'Twitter Mention Sentiment Tracker (n8n)',
-    description: 'Real-time brand listening workflow. Monitores Twitter (X) for brand mentions, triggers sentiment classification via LLMs, and flags negative sentiment posts directly to customer support teams on Slack.',
+    description: 'Real-time brand listening workflow. Monitors Twitter (X) for brand mentions, triggers sentiment classification via LLMs, and flags negative sentiment posts directly to customer support teams on Slack.',
     tags: ['n8n', 'Twitter API', 'Sentiment Analysis', 'Slack Notifier', 'Customer Care'],
     category: 'automation',
     featured: false,
@@ -182,33 +182,9 @@ const PROJECTS = [
     ],
   },
   {
-    image: '/images/workflow-social-media.png',
-    title: 'Social Media Prompt Parser (n8n)',
-    description: 'Inbound content automation system. Accepts dynamic text prompts from web forms, parses variables against strict content schemas using code nodes, and publishes structured marketing copy to multiple social channels.',
-    tags: ['n8n', 'Schema Parser', 'Dynamic Prompts', 'Social Publishing', 'Validation Nodes'],
-    category: 'automation',
-    featured: false,
-    span: 1,
-    links: [
-      { href: 'https://github.com/NomiDevx', label: 'GitHub', icon: <FiGithub size={13} /> },
-    ],
-  },
-  {
-    image: '/images/workflow-product-launch.png',
-    title: 'Multi-Channel Product Notifier (n8n)',
-    description: 'Marketing deployment automation. Orchestrates simultaneous product launch notifications across email (Gmail), team channels (Slack), and user groups (Telegram) with customized template assets.',
-    tags: ['n8n', 'Product Launch', 'Multi-Channel Push', 'Email Marketing', 'Integrations'],
-    category: 'automation',
-    featured: false,
-    span: 1,
-    links: [
-      { href: 'https://github.com/NomiDevx', label: 'GitHub', icon: <FiGithub size={13} /> },
-    ],
-  },
-  {
     image: '/images/app-cafeshop.png',
     title: 'Cafe Shop – Coffee Ordering App',
-    description: 'E-commerce Flutter application for a coffee shop chain. Features catalog browsing, order customization, delivery mode toggles, and payment checkout, built with a premium dark HSL design.',
+    description: 'E-commerce Flutter application for a coffee shop chain. Features catalog browsing, order customization, delivery mode toggles, and payment checkout, built with a premium dark design.',
     tags: ['Flutter', 'Dart', 'Firebase', 'State Management'],
     category: 'mobile',
     featured: false,
@@ -256,9 +232,9 @@ const PROJECTS = [
   },
   {
     emoji: '📱',
-    title: '12+ More Mobile Apps',
-    description: 'A collection of production-ready Flutter and Android apps covering productivity tools, social networks, utility apps, and fintech dashboards published on github.',
-    tags: ['Flutter', 'Dart', 'Android', 'Firebase', 'API Integrations'],
+    title: '12+ Production Mobile Apps',
+    description: 'A collection of production-ready Flutter and Android apps covering productivity tools, social networks, utility apps, and fintech dashboards published on GitHub.',
+    tags: ['Flutter', 'Dart', 'Android', 'Firebase', 'REST APIs'],
     category: 'mobile',
     featured: false,
     span: 1,
@@ -276,7 +252,7 @@ function ProjectCard({ image, emoji, title, description, tags, links, featured, 
       <div className="project-img-wrap">
         {image ? (
           <>
-            <img src={image} alt={`${title} screenshot`} loading="lazy" />
+            <img src={image} alt={`${title} preview`} loading="lazy" decoding="async" />
             <div className="project-img-overlay" />
           </>
         ) : (
@@ -295,7 +271,6 @@ function ProjectCard({ image, emoji, title, description, tags, links, featured, 
             <button
               onClick={() => onWatchVideo(video)}
               className="project-link-btn primary"
-              style={{ cursor: 'pointer', border: 'none', outline: 'none' }}
             >
               <FiPlay size={13} /> Demo Video
             </button>
@@ -322,7 +297,6 @@ function Projects() {
   const [videoSrc, setVideoSrc] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
-  // Reset showAll when switching categories to avoid layout confusion
   const handleCategoryChange = (catId) => {
     setSelectedCategory(catId);
     setShowAll(false);
@@ -338,37 +312,38 @@ function Projects() {
   return (
     <>
       <style>{`
-        #projects { background: var(--bg-secondary); }
+        #projects {
+          background: var(--bg-secondary);
+        }
 
         .projects-tabs {
           display: flex;
           justify-content: center;
-          gap: 0.75rem;
-          margin-bottom: 3rem;
+          gap: 0.6rem;
+          margin-bottom: 2.75rem;
           flex-wrap: wrap;
-          padding: 0 1.5rem;
         }
         .tab-btn {
-          background: rgba(255, 255, 255, 0.02);
+          background: var(--bg-card);
           border: 1px solid var(--border);
           color: var(--text-secondary);
-          padding: 9px 20px;
+          padding: 8px 18px;
           border-radius: var(--radius-full);
-          font-size: 0.86rem;
+          font-size: 0.85rem;
           font-weight: 600;
           cursor: pointer;
           transition: background var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition);
         }
         .tab-btn:hover {
-          border-color: rgba(6,182,212,0.3);
+          border-color: var(--accent-cyan);
           color: var(--text-primary);
-          background: rgba(6,182,212,0.03);
+          background: var(--accent-glow2);
         }
         .tab-btn.active {
           background: var(--gradient-accent);
           color: #fff;
           border-color: transparent;
-          box-shadow: 0 4px 18px rgba(124,58,237,0.3);
+          box-shadow: 0 4px 16px var(--accent-glow);
         }
 
         .bento-grid {
@@ -377,24 +352,24 @@ function Projects() {
           gap: 1.25rem;
           max-width: 1200px;
           margin: 0 auto;
-          padding: 0 1.5rem;
         }
         
         .project-card-wrap {
-          animation: cardFadeIn 0.5s ease forwards;
+          animation: cardFadeIn 0.4s ease forwards;
+          height: 100%;
         }
 
         @keyframes cardFadeIn {
-          from { opacity: 0; transform: translateY(15px); }
+          from { opacity: 0; transform: translateY(12px); }
           to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 1024px) {
-          .bento-grid { grid-template-columns: 1fr 1fr; }
+          .bento-grid { grid-template-columns: repeat(2, 1fr); }
           .project-card-wide { grid-column: span 2; }
         }
-        @media (max-width: 640px) {
-          .bento-grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+          .bento-grid { grid-template-columns: 1fr; gap: 1rem; }
           .project-card-wide { grid-column: span 1; }
         }
 
@@ -422,9 +397,9 @@ function Projects() {
           transition: opacity var(--transition);
         }
         .project-card:hover {
-          border-color: rgba(124,58,237,0.45);
-          transform: translateY(-7px);
-          box-shadow: 0 20px 60px rgba(124,58,237,0.18);
+          border-color: var(--accent);
+          transform: translateY(-5px);
+          box-shadow: 0 16px 48px var(--accent-glow);
         }
         .project-card:hover::after { opacity: 1; }
 
@@ -433,13 +408,14 @@ function Projects() {
           top: 12px; right: 12px;
           background: var(--gradient-accent);
           color: #fff;
-          font-size: 0.62rem;
+          font-size: 0.65rem;
           font-weight: 700;
-          letter-spacing: 0.8px;
+          letter-spacing: 0.6px;
           text-transform: uppercase;
           padding: 4px 10px;
           border-radius: var(--radius-full);
           z-index: 3;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .project-img-wrap {
@@ -450,45 +426,54 @@ function Projects() {
           background: var(--bg-secondary);
           flex-shrink: 0;
         }
-        .project-card-wide .project-img-wrap { height: 240px; }
+        .project-card-wide .project-img-wrap { height: 230px; }
+
+        @media (max-width: 768px) {
+          .project-img-wrap,
+          .project-card-wide .project-img-wrap {
+            height: 190px;
+          }
+        }
 
         .project-img-wrap img {
           width: 100%; height: 100%;
           object-fit: cover;
           object-position: top;
-          transition: transform 0.6s ease;
+          transition: transform 0.5s ease;
         }
-        .project-card:hover .project-img-wrap img { transform: scale(1.06); }
+        .project-card:hover .project-img-wrap img { transform: scale(1.05); }
 
         .project-img-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to bottom, transparent 40%, rgba(10,10,15,0.95) 100%);
+          background: linear-gradient(to bottom, transparent 40%, var(--bg-card) 100%);
+          opacity: 0.7;
         }
         .project-emoji {
           width: 100%; height: 100%;
           display: flex; align-items: center; justify-content: center;
-          font-size: 4.5rem;
-          background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(6,182,212,0.08));
+          font-size: 4rem;
+          background: var(--accent-glow2);
         }
 
         .project-body {
-          padding: 1.5rem;
+          padding: 1.35rem 1.4rem 1.5rem;
           display: flex;
           flex-direction: column;
           flex: 1;
         }
         .project-title {
           font-family: var(--font-heading);
-          font-size: 1.1rem;
+          font-size: 1.08rem;
           font-weight: 700;
-          margin-bottom: 0.6rem;
+          margin-bottom: 0.5rem;
           color: var(--text-primary);
+          line-height: 1.3;
         }
         .project-desc {
           font-size: 0.86rem;
           color: var(--text-secondary);
-          line-height: 1.7;
+          line-height: 1.65;
           flex: 1;
           margin-bottom: 1rem;
         }
@@ -499,10 +484,10 @@ function Projects() {
           margin-bottom: 1.1rem;
         }
         .project-tag {
-          background: rgba(124,58,237,0.08);
-          border: 1px solid rgba(124,58,237,0.2);
+          background: var(--accent-glow2);
+          border: 1px solid var(--border);
           border-radius: var(--radius-full);
-          color: #c4b5fd;
+          color: var(--accent-purple);
           font-size: 0.68rem;
           font-weight: 600;
           padding: 2px 9px;
@@ -517,32 +502,33 @@ function Projects() {
           display: inline-flex;
           align-items: center;
           gap: 5px;
-          font-size: 0.79rem;
+          font-size: 0.78rem;
           font-weight: 600;
           padding: 7px 14px;
           border-radius: var(--radius-full);
-          border: 1px solid rgba(255,255,255,0.1);
+          border: 1px solid var(--border);
           color: var(--text-secondary);
           background: transparent;
           text-decoration: none;
           transition: border-color var(--transition), color var(--transition), background var(--transition), transform var(--transition);
         }
         .project-link-btn:hover {
-          border-color: rgba(6,182,212,0.4);
+          border-color: var(--accent-cyan);
           color: var(--accent-cyan);
-          background: rgba(6,182,212,0.06);
+          background: var(--accent-glow2);
           transform: translateY(-2px);
         }
         .project-link-btn.primary {
           background: var(--gradient-accent);
           border-color: transparent;
           color: #fff;
+          box-shadow: 0 2px 10px var(--accent-glow);
         }
         .project-link-btn.primary:hover {
-          opacity: 0.88;
+          opacity: 0.92;
           color: #fff;
           transform: translateY(-2px);
-          box-shadow: 0 4px 18px rgba(124,58,237,0.4);
+          box-shadow: 0 4px 16px var(--accent-glow);
         }
 
         .projects-cta {
@@ -550,47 +536,46 @@ function Projects() {
           margin-top: 2.5rem;
         }
 
-        /* Video Modal Styles */
+        /* Video Modal */
         .video-modal-overlay {
           position: fixed;
           inset: 0;
-          background: rgba(10, 10, 15, 0.85);
+          background: rgba(0, 0, 0, 0.85);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 2000;
-          padding: 1.5rem;
+          padding: 1.25rem;
           animation: modalFadeIn 0.3s ease;
         }
         .video-modal-container {
           background: var(--bg-secondary);
-          border: 1px solid rgba(124,58,237,0.3);
+          border: 1px solid var(--border);
           border-radius: var(--radius-lg);
-          max-width: 900px;
+          max-width: 860px;
           width: 100%;
           position: relative;
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(124,58,237,0.15);
+          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
           overflow: hidden;
-          animation: modalScaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .video-modal-close {
           position: absolute;
-          top: 14px; right: 14px;
-          background: rgba(0,0,0,0.5);
-          border: 1px solid rgba(255,255,255,0.1);
+          top: 12px; right: 12px;
+          background: rgba(0,0,0,0.6);
+          border: 1px solid rgba(255,255,255,0.2);
           color: #fff;
-          width: 38px; height: 38px;
+          width: 36px; height: 36px;
           border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
           cursor: pointer;
-          transition: background var(--transition), border-color var(--transition), transform var(--transition);
+          transition: background var(--transition), transform var(--transition);
           z-index: 10;
         }
         .video-modal-close:hover {
-          background: rgba(124,58,237,0.4);
-          border-color: rgba(124,58,237,0.5);
+          background: var(--accent);
           transform: rotate(90deg);
         }
         .video-modal-player-wrap {
@@ -603,17 +588,17 @@ function Projects() {
           display: block;
         }
         .video-modal-info {
-          padding: 1.5rem 2rem;
+          padding: 1.25rem 1.5rem;
           border-top: 1px solid var(--border);
         }
         .video-modal-info h3 {
           font-family: var(--font-heading);
-          font-size: 1.25rem;
+          font-size: 1.15rem;
           color: var(--text-primary);
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.4rem;
         }
         .video-modal-info p {
-          font-size: 0.88rem;
+          font-size: 0.86rem;
           color: var(--text-secondary);
           line-height: 1.6;
         }
@@ -623,25 +608,24 @@ function Projects() {
           to { opacity: 1; }
         }
         @keyframes modalScaleUp {
-          from { opacity: 0; transform: scale(0.92); }
+          from { opacity: 0; transform: scale(0.94); }
           to { opacity: 1; transform: scale(1); }
         }
 
         @media (max-width: 640px) {
           .video-modal-overlay { padding: 0.75rem; }
-          .video-modal-info { padding: 1.25rem 1rem; }
-          .video-modal-info h3 { font-size: 1.1rem; }
-          .video-modal-info p { font-size: 0.8rem; }
+          .video-modal-info { padding: 1rem; }
+          .video-modal-info h3 { font-size: 1rem; }
         }
       `}</style>
 
       <section id="projects">
-        <div className="container-fluid px-0">
+        <div className="container">
           <div className="reveal">
             <SectionTitle
-              overline="Things I've built"
-              title="My <span class='accent-word'>Projects</span>"
-              subtitle="A selection of things I've built — from AI-powered agents to production-ready automation workflows."
+              overline="Portfolio Portfolio"
+              title="Featured <span class='accent-word'>Projects</span>"
+              subtitle="Production applications, multi-agent frameworks, and high-scale automation workflows."
             />
           </div>
 
@@ -658,7 +642,7 @@ function Projects() {
           </div>
 
           <div className="bento-grid">
-            {visibleProjects.map((p, i) => (
+            {visibleProjects.map((p) => (
               <div
                 key={p.title}
                 className={`project-card-wrap${p.span === 2 ? ' project-card-wide' : ''}`}
@@ -669,11 +653,10 @@ function Projects() {
           </div>
 
           {filteredProjects.length > 7 && (
-            <div className="projects-view-more reveal" style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <div className="reveal" style={{ textAlign: 'center', marginTop: '2.5rem' }}>
               <button
                 className="btn-accent"
                 onClick={() => setShowAll(!showAll)}
-                style={{ cursor: 'pointer', border: 'none' }}
               >
                 {showAll ? 'Show Less Projects' : 'View More Projects'}
               </button>
@@ -686,9 +669,8 @@ function Projects() {
               target="_blank"
               rel="noreferrer"
               className="btn-outline"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
             >
-              <FiGithub /> View More on GitHub
+              <FiGithub /> View All Repositories on GitHub <FiArrowRight size={14} />
             </a>
           </div>
         </div>
@@ -697,15 +679,15 @@ function Projects() {
       {videoSrc && (
         <div className="video-modal-overlay" onClick={() => setVideoSrc(null)}>
           <div className="video-modal-container" onClick={(e) => e.stopPropagation()}>
-            <button className="video-modal-close" onClick={() => setVideoSrc(null)} aria-label="Close video">
-              <FiX size={20} />
+            <button className="video-modal-close" onClick={() => setVideoSrc(null)} aria-label="Close demo video">
+              <FiX size={18} />
             </button>
             <div className="video-modal-player-wrap">
               <video src={videoSrc} controls autoPlay className="video-modal-player" />
             </div>
             <div className="video-modal-info">
-              <h3>LangGraph Job Search Agent - Demo Video</h3>
-              <p>Watch how the multi-stage LangGraph agent scans boards, evaluates compatibility, drafts cover letters, and triggers real-time Slack alerts.</p>
+              <h3>LangGraph Job Search Agent – Live Demo</h3>
+              <p>Watch how the LangGraph multi-stage agent scrapes boards, computes cosine similarity with vector memory, generates customized cover letters, and alerts Slack in real time.</p>
             </div>
           </div>
         </div>

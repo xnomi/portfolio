@@ -6,7 +6,8 @@ function SectionTitle({ overline, title, subtitle }) {
       <style>{`
         .section-title-wrap {
           text-align: center;
-          margin-bottom: 3.5rem;
+          margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+          padding: 0 0.5rem;
         }
         .section-overline {
           display: inline-flex;
@@ -14,25 +15,26 @@ function SectionTitle({ overline, title, subtitle }) {
           gap: 8px;
           font-size: 0.76rem;
           font-weight: 700;
-          letter-spacing: 3px;
+          letter-spacing: 2.5px;
           text-transform: uppercase;
-          color: #a78bfa;
-          margin-bottom: 1rem;
+          color: var(--accent);
+          margin-bottom: 0.85rem;
         }
         .section-overline::before,
         .section-overline::after {
           content: '';
           display: block;
-          width: 24px;
-          height: 1px;
+          width: 20px;
+          height: 2px;
           background: var(--gradient-accent);
+          border-radius: 1px;
         }
         .section-heading {
           font-family: var(--font-heading);
-          font-size: clamp(2rem, 4.5vw, 3rem);
+          font-size: clamp(1.85rem, 4.2vw, 2.85rem);
           font-weight: 800;
-          margin-bottom: 1rem;
-          line-height: 1.12;
+          margin-bottom: 0.85rem;
+          line-height: 1.15;
           letter-spacing: -1px;
           color: var(--text-primary);
         }
@@ -44,10 +46,10 @@ function SectionTitle({ overline, title, subtitle }) {
         }
         .section-subtitle {
           color: var(--text-secondary);
-          font-size: 1rem;
-          max-width: 520px;
+          font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+          max-width: 540px;
           margin: 0 auto;
-          line-height: 1.75;
+          line-height: 1.7;
         }
       `}</style>
       <div className="section-title-wrap">

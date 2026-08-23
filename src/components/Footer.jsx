@@ -27,8 +27,9 @@ function Footer() {
       <style>{`
         .portfolio-footer {
           background: var(--bg-secondary);
-          border-top: 1px solid rgba(124,58,237,0.15);
-          padding: 3.5rem 1.5rem 2rem;
+          border-top: 1px solid var(--border);
+          padding: 3rem 1.25rem 2rem;
+          width: 100%;
         }
         .footer-inner {
           max-width: 1100px;
@@ -36,7 +37,7 @@ function Footer() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 1.75rem;
+          gap: 1.5rem;
           text-align: center;
         }
         .footer-logo {
@@ -64,20 +65,23 @@ function Footer() {
         .footer-nav li a {
           background: none;
           border: none;
-          color: var(--text-muted);
+          color: var(--text-secondary);
           font-size: 0.88rem;
+          font-weight: 500;
           cursor: pointer;
           transition: color var(--transition);
-          padding: 4px 12px;
+          padding: 6px 12px;
           border-radius: var(--radius-sm);
           text-decoration: none;
         }
         .footer-nav li button:hover,
-        .footer-nav li a:hover { color: #a78bfa; }
+        .footer-nav li a:hover { color: var(--accent); }
 
         .footer-socials {
           display: flex;
           gap: 0.6rem;
+          flex-wrap: wrap;
+          justify-content: center;
         }
         .footer-social-btn {
           display: flex;
@@ -85,23 +89,23 @@ function Footer() {
           justify-content: center;
           width: 40px; height: 40px;
           border-radius: 50%;
-          border: 1px solid rgba(124,58,237,0.2);
-          background: rgba(124,58,237,0.05);
-          color: var(--text-muted);
+          border: 1px solid var(--border);
+          background: var(--bg-card);
+          color: var(--text-secondary);
           text-decoration: none;
           transition: border-color var(--transition), color var(--transition), transform var(--transition), background var(--transition);
         }
         .footer-social-btn:hover {
-          border-color: rgba(6,182,212,0.5);
+          border-color: var(--accent-cyan);
           color: var(--accent-cyan);
-          background: rgba(6,182,212,0.08);
-          transform: translateY(-4px);
+          background: var(--accent-glow2);
+          transform: translateY(-3px);
         }
 
         .footer-divider {
           width: 100%;
           height: 1px;
-          background: rgba(124,58,237,0.12);
+          background: var(--border);
         }
 
         .footer-copy {
@@ -112,6 +116,7 @@ function Footer() {
           gap: 5px;
           flex-wrap: wrap;
           justify-content: center;
+          line-height: 1.5;
         }
         .footer-copy svg { color: #ef4444; }
         .footer-copy strong {
@@ -137,11 +142,14 @@ function Footer() {
 
           <div className="footer-socials">
             {SOCIAL_LINKS.map(({ icon, href, label }) => (
-              <a key={label} href={href}
+              <a
+                key={label}
+                href={href}
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel="noreferrer"
                 className="footer-social-btn"
                 aria-label={label}
+                title={label}
               >{icon}</a>
             ))}
           </div>

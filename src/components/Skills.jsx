@@ -1,61 +1,57 @@
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
-import { SiFlutter, SiDart, SiPython, SiReact } from 'react-icons/si';
-import { FiSmartphone, FiServer, FiCpu } from 'react-icons/fi';
+import { SiFlutter, SiPython, SiReact, SiNodedotjs } from 'react-icons/si';
+import { FiLayout, FiServer, FiCpu, FiGitBranch } from 'react-icons/fi';
 import { FaRobot, FaBrain } from 'react-icons/fa';
 
 const CATEGORIES = [
   {
-    icon: <FiSmartphone size={26} />,
-    title: 'Mobile & Frontend Development',
+    icon: <FiLayout size={24} />,
+    title: 'Frontend & React Ecosystem',
     color: '#06b6d4',
     gradientFrom: 'rgba(6,182,212,0.15)',
-    gradientTo: 'rgba(6,182,212,0.03)',
-    description: 'Crafting responsive mobile applications and highly interactive, performant web frontends with premium UI/UX.',
+    description: 'Crafting pixel-perfect, accessible, and ultra-fast responsive web frontends and mobile apps.',
     skills: [
-      { icon: <SiFlutter size={20} />, name: 'Flutter (iOS/Android)', level: 90 },
-      { icon: <SiReact size={20} />,   name: 'React.js / Web',   level: 88 },
+      { icon: <SiReact size={18} />,   name: 'React.js / Web Architecture', level: 92 },
+      { icon: <SiFlutter size={18} />, name: 'Flutter & Dart (iOS/Android)', level: 88 },
     ],
-    tags: ['Flutter & Dart', 'React.js', 'State Management (Provider/Redux)', 'TailwindCSS', 'REST & GraphQL APIs', 'App Store Publishing'],
+    tags: ['React.js', 'State Management (Redux/Context)', 'TailwindCSS / Vanilla CSS', 'REST & GraphQL APIs', 'Responsive Design', 'Next.js / Vite'],
   },
   {
-    icon: <FiServer size={26} />,
+    icon: <FiServer size={24} />,
     title: 'Backend & Cloud Architecture',
     color: '#10b981',
     gradientFrom: 'rgba(16,185,129,0.15)',
-    gradientTo: 'rgba(16,185,129,0.03)',
-    description: 'Designing secure, fast, and scalable backend servers, custom APIs, and robust relational & NoSQL databases.',
+    description: 'Engineering robust RESTful APIs, distributed microservices, and high-performance databases.',
     skills: [
-      { icon: <SiPython size={20} />, name: 'Python / Node.js', level: 88 },
-      { icon: <FiServer size={20} />, name: 'Databases (SQL/NoSQL)', level: 85 },
+      { icon: <SiNodedotjs size={18} />, name: 'Node.js (Express / Fastify)', level: 90 },
+      { icon: <SiPython size={18} />,    name: 'Python (FastAPI / Django)', level: 88 },
     ],
-    tags: ['FastAPI', 'Node.js (Express)', 'PostgreSQL / MySQL', 'Redis', 'MongoDB', 'Firebase / Supabase', 'Docker', 'AWS (EC2/S3)'],
+    tags: ['Node.js (Express)', 'FastAPI', 'PostgreSQL / MySQL', 'MongoDB / Redis', 'Firebase / Supabase', 'Docker', 'AWS (EC2/S3)'],
   },
   {
-    icon: <FaRobot size={26} />,
+    icon: <FaRobot size={24} />,
     title: 'Agentic AI & LLMs',
-    color: '#a78bfa',
-    gradientFrom: 'rgba(124,58,237,0.15)',
-    gradientTo: 'rgba(124,58,237,0.03)',
-    description: 'Engineering multi-agent frameworks, advanced LangGraph state charts, and custom LLM execution pipelines.',
+    color: '#8b5cf6',
+    gradientFrom: 'rgba(139,92,246,0.15)',
+    description: 'Building autonomous multi-agent coordination frameworks and stateful LLM graph charts.',
     skills: [
-      { icon: <FaBrain size={20} />,   name: 'CrewAI / AutoGen', level: 90 },
-      { icon: <FiCpu size={20} />,     name: 'LangGraph Systems', level: 86 },
+      { icon: <FaBrain size={18} />,   name: 'AutoGen & CrewAI Systems', level: 92 },
+      { icon: <FiCpu size={18} />,     name: 'LangGraph State Charts & RAG', level: 90 },
     ],
-    tags: ['Multi-Agent Coordination', 'LangGraph State Charts', 'Custom LLM Pipelines', 'RAG / Vector Databases', 'LangSmith Monitoring'],
+    tags: ['AutoGen', 'LangGraph', 'CrewAI', 'OpenAI & DeepSeek APIs', 'RAG & Vector DBs (ChromaDB)', 'Prompt Engineering', 'LangSmith Monitoring'],
   },
   {
-    icon: <FiCpu size={26} />,
-    title: 'n8n Workflow Automation',
+    icon: <FiGitBranch size={24} />,
+    title: 'n8n & Workflow Automation',
     color: '#f59e0b',
     gradientFrom: 'rgba(245,158,11,0.15)',
-    gradientTo: 'rgba(245,158,11,0.03)',
-    description: 'Building automated data synchronizations, webhook listeners, Slack/Telegram bots, and cron pipelines.',
+    description: 'Building end-to-end webhook pipelines, automated data synchronizations, and Slack/Telegram bots.',
     skills: [
-      { icon: <FiCpu size={20} />,     name: 'n8n Integrations', level: 92 },
-      { icon: <FiCpu size={20} />,     name: 'API Synchronizations', level: 88 },
+      { icon: <FiGitBranch size={18} />, name: 'n8n Enterprise Automation', level: 94 },
+      { icon: <FiCpu size={18} />,       name: 'Webhook & Third-Party APIs', level: 90 },
     ],
-    tags: ['Gmail/Drive Automations', 'Slack/Telegram Bots', 'Webhook Triggers', 'OAuth2 Auth', 'Error Handling Workflows', 'Audit Logging'],
+    tags: ['n8n Workflows', 'Slack & Telegram Bots', 'Gmail / Drive APIs', 'OAuth2 / Webhooks', 'Automated Triage', 'Error Recovery Pipelines'],
   },
 ];
 
@@ -70,7 +66,7 @@ function SkillBar({ name, icon, level, color }) {
       <div className="skill-bar-track">
         <div
           className="skill-bar-fill"
-          style={{ width: `${level}%`, background: `linear-gradient(90deg, ${color}aa, ${color})` }}
+          style={{ width: `${level}%`, background: `linear-gradient(90deg, ${color}99, ${color})` }}
         />
       </div>
     </div>
@@ -81,25 +77,32 @@ function Skills() {
   return (
     <>
       <style>{`
-        #skills { background: var(--bg-primary); }
+        #skills {
+          background: var(--bg-primary);
+        }
 
         .skills-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1.75rem;
-          max-width: 1050px;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+          max-width: 1100px;
           margin: 0 auto;
-          padding: 0 1.5rem;
         }
-        @media (max-width: 700px) { .skills-grid { grid-template-columns: 1fr; } }
+
+        @media (max-width: 800px) {
+          .skills-grid {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+          }
+        }
 
         .skill-card {
           background: var(--bg-card);
           border: 1px solid var(--border);
           border-radius: var(--radius-xl);
-          padding: 2.25rem 2rem;
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          padding: 2rem 1.75rem;
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           position: relative;
           overflow: hidden;
           transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
@@ -108,25 +111,27 @@ function Skills() {
           content: '';
           position: absolute;
           top: 0; left: 0; right: 0;
-          height: 1px;
+          height: 2px;
           background: var(--gradient-accent);
           opacity: 0;
           transition: opacity var(--transition);
         }
-        .skill-card:hover { transform: translateY(-8px); }
+        .skill-card:hover {
+          transform: translateY(-5px);
+        }
         .skill-card:hover::before { opacity: 1; }
 
         .skill-card-bg {
           position: absolute;
           bottom: -40px; right: -40px;
-          width: 200px; height: 200px;
+          width: 180px; height: 180px;
           border-radius: 50%;
-          filter: blur(60px);
+          filter: blur(50px);
           pointer-events: none;
-          opacity: 0.5;
+          opacity: 0.4;
           transition: opacity var(--transition);
         }
-        .skill-card:hover .skill-card-bg { opacity: 0.8; }
+        .skill-card:hover .skill-card-bg { opacity: 0.7; }
 
         .skill-card-header {
           display: flex;
@@ -135,12 +140,10 @@ function Skills() {
           margin-bottom: 0.75rem;
         }
         .skill-card-icon {
-          width: 54px; height: 54px;
+          width: 48px; height: 48px;
           border-radius: var(--radius-md);
           display: flex; align-items: center; justify-content: center;
           flex-shrink: 0;
-          position: relative;
-          z-index: 1;
         }
         .skill-card-title {
           font-family: var(--font-heading);
@@ -149,70 +152,86 @@ function Skills() {
           margin: 0;
         }
         .skill-card-desc {
-          font-size: 0.85rem;
+          font-size: 0.86rem;
           color: var(--text-secondary);
           line-height: 1.6;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.4rem;
         }
 
         /* Progress bars */
-        .skill-bar-item { margin-bottom: 1.1rem; }
+        .skill-bar-item { margin-bottom: 1rem; }
         .skill-bar-header {
           display: flex;
           align-items: center;
           gap: 0.5rem;
           margin-bottom: 6px;
         }
-        .skill-bar-icon { flex-shrink: 0; }
+        .skill-bar-icon {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
         .skill-bar-name {
-          font-size: 0.87rem;
-          font-weight: 500;
-          color: var(--text-secondary);
+          font-size: 0.86rem;
+          font-weight: 600;
+          color: var(--text-primary);
           flex: 1;
         }
-        .skill-bar-pct { font-size: 0.78rem; font-weight: 700; }
+        .skill-bar-pct {
+          font-size: 0.78rem;
+          font-weight: 700;
+        }
         .skill-bar-track {
           height: 6px;
-          background: rgba(255,255,255,0.05);
+          background: var(--border);
           border-radius: 3px;
           overflow: hidden;
         }
         .skill-bar-fill {
           height: 100%;
           border-radius: 3px;
-          box-shadow: 0 0 8px currentColor;
-          transition: width 1.5s ease;
+          transition: width 1.2s ease;
         }
 
         /* Tags */
         .skill-tags {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.4rem;
+          gap: 0.35rem;
           margin-top: 1.25rem;
         }
         .skill-tag {
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.07);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border);
           border-radius: var(--radius-full);
-          color: var(--text-muted);
-          font-size: 0.71rem;
+          color: var(--text-secondary);
+          font-size: 0.72rem;
+          font-weight: 500;
           padding: 3px 10px;
           transition: color var(--transition), border-color var(--transition);
         }
         .skill-card:hover .skill-tag {
-          color: var(--text-secondary);
-          border-color: rgba(255,255,255,0.12);
+          color: var(--text-primary);
+          border-color: var(--border-hover);
+        }
+
+        @media (max-width: 480px) {
+          .skill-card {
+            padding: 1.5rem 1.25rem;
+          }
+          .skill-card-title {
+            font-size: 1.05rem;
+          }
         }
       `}</style>
 
       <section id="skills">
-        <div className="container-fluid px-0">
+        <div className="container">
           <div className="reveal">
             <SectionTitle
-              overline="What I work with"
+              overline="Technical Arsenal"
               title="My <span class='accent-word'>Skills</span>"
-              subtitle="Technologies and frameworks I use to build intelligent, production-ready solutions."
+              subtitle="Production-tested technologies across full-stack web, scalable backends, and agentic AI architectures."
             />
           </div>
 
@@ -221,20 +240,20 @@ function Skills() {
               <div
                 className={`skill-card reveal delay-${i + 1}`}
                 key={title}
-                style={{ borderColor: `${color}20` }}
+                style={{ borderColor: `${color}30` }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = `${color}60`;
-                  e.currentTarget.style.boxShadow   = `0 12px 48px ${color}20`;
+                  e.currentTarget.style.borderColor = `${color}80`;
+                  e.currentTarget.style.boxShadow   = `0 12px 36px ${color}22`;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = `${color}20`;
+                  e.currentTarget.style.borderColor = `${color}30`;
                   e.currentTarget.style.boxShadow   = 'none';
                 }}
               >
                 <div className="skill-card-bg" style={{ background: gradientFrom }} />
 
                 <div className="skill-card-header">
-                  <div className="skill-card-icon" style={{ background: `${color}15`, color }}>
+                  <div className="skill-card-icon" style={{ background: `${color}18`, color }}>
                     {icon}
                   </div>
                   <h3 className="skill-card-title" style={{ color }}>{title}</h3>

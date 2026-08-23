@@ -1,49 +1,69 @@
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
-import { FiCode, FiBriefcase, FiStar, FiDownload } from 'react-icons/fi';
+import { FiCode, FiBriefcase, FiStar, FiDownload, FiCheckCircle } from 'react-icons/fi';
 
 const STATS = [
-  { icon: <FiCode />, value: '2+', label: 'Years Experience' },
-  { icon: <FiBriefcase />, value: '12+', label: 'Projects Shipped' },
-  { icon: <FiStar />, value: '4.5★', label: 'Freelance Rating' },
+  { icon: <FiCode />, value: '2+', label: 'Years Exp.' },
+  { icon: <FiBriefcase />, value: '14+', label: 'Projects Shipped' },
+  { icon: <FiStar />, value: '5.0★', label: 'Client Rating' },
 ];
 
-const BADGES = ['Flutter', 'React', 'Node.js', 'AI Automation', 'Python', 'LangGraph', 'CrewAI', 'AutoGen', 'Upwork', 'Fiverr'];
+const BADGES = [
+  'React.js', 'Node.js', 'AutoGen', 'LangGraph', 'CrewAI',
+  'n8n Automation', 'Python / FastAPI', 'Flutter & Dart', 'PostgreSQL', 'Docker'
+];
 
 function About() {
   return (
     <>
       <style>{`
-        #about { background: var(--bg-secondary); }
+        #about {
+          background: var(--bg-secondary);
+        }
 
         .about-grid {
           display: grid;
-          grid-template-columns: 1fr 1.1fr;
-          gap: 4.5rem;
+          grid-template-columns: 1fr 1.15fr;
+          gap: 3.5rem;
           align-items: center;
           max-width: 1100px;
           margin: 0 auto;
-          padding: 0 1.5rem;
+          padding: 0 1.25rem;
         }
-        @media (max-width: 900px) {
-          .about-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-          .about-avatar-side { display: flex; flex-direction: column; align-items: center; }
-          .about-badge-row { justify-content: center; }
+
+        @media (max-width: 920px) {
+          .about-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            text-align: center;
+          }
+          .about-avatar-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .about-badge-row {
+            justify-content: center;
+          }
+          .about-cta-row {
+            justify-content: center;
+          }
         }
 
         /* Avatar */
         .about-avatar-wrap {
           position: relative;
-          width: 290px;
-          height: 290px;
+          width: min(270px, 68vw);
+          height: min(270px, 68vw);
           margin: 0 auto;
         }
         .about-avatar-ring {
           position: absolute;
-          inset: -12px;
+          inset: -10px;
           border-radius: 50%;
-          border: 2px dashed rgba(124,58,237,0.4);
-          animation: rotateRing 18s linear infinite;
+          border: 2px dashed var(--accent-purple);
+          opacity: 0.5;
+          animation: rotateRing 20s linear infinite;
         }
         .about-avatar-ring::before {
           content: '';
@@ -53,88 +73,83 @@ function About() {
           background: var(--gradient-accent);
           border-radius: 50%;
           transform: translateX(-50%);
-          box-shadow: 0 0 18px #7c3aed;
+          box-shadow: 0 0 16px var(--accent);
         }
         .about-avatar-ring-2 {
           position: absolute;
-          inset: -24px;
+          inset: -20px;
           border-radius: 50%;
-          border: 1px solid rgba(6,182,212,0.15);
-          animation: rotateRing 28s linear infinite reverse;
+          border: 1px solid var(--accent-glow);
+          animation: rotateRing 30s linear infinite reverse;
         }
         .about-avatar-img-wrap {
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          border: 2px solid rgba(124,58,237,0.4);
-          box-shadow: 0 0 50px rgba(124,58,237,0.25), 0 0 100px rgba(6,182,212,0.1);
+          border: 2px solid var(--border);
+          box-shadow: 0 10px 40px var(--accent-glow);
           overflow: hidden;
           background: var(--bg-card);
-          animation: pulseGlow 4s ease-in-out infinite;
         }
         .about-avatar-img-wrap img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           object-position: center;
-          transform: scale(1.05);
         }
 
         /* Stats */
         .about-stats {
-          display: flex;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
           gap: 0.75rem;
           margin-top: 2rem;
-          flex-wrap: wrap;
-          justify-content: center;
+          width: 100%;
+          max-width: 360px;
         }
         .stat-card {
           background: var(--bg-card);
           border: 1px solid var(--border);
           border-radius: var(--radius-md);
-          padding: 1rem 1.1rem;
+          padding: 0.9rem 0.6rem;
           text-align: center;
-          flex: 1;
-          min-width: 85px;
           backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
         }
         .stat-card:hover {
-          border-color: rgba(124,58,237,0.4);
-          box-shadow: 0 4px 24px rgba(124,58,237,0.2);
+          border-color: var(--accent);
+          box-shadow: 0 6px 20px var(--accent-glow);
           transform: translateY(-3px);
         }
         .stat-icon {
           font-size: 1.1rem;
-          margin-bottom: 0.25rem;
+          margin-bottom: 0.2rem;
+          color: var(--accent-cyan);
+        }
+        .stat-value {
+          font-family: var(--font-heading);
+          font-size: 1.4rem;
+          font-weight: 800;
           background: var(--gradient-text);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-        }
-        .stat-value {
-          font-family: var(--font-heading);
-          font-size: 1.5rem;
-          font-weight: 800;
-          background: var(--gradient-accent);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          line-height: 1;
+          line-height: 1.1;
         }
         .stat-label {
-          font-size: 0.7rem;
+          font-size: 0.72rem;
           color: var(--text-muted);
-          letter-spacing: 0.5px;
-          margin-top: 3px;
+          letter-spacing: 0.3px;
+          margin-top: 2px;
         }
 
         /* Text side */
         .about-text h3 {
-          font-size: 1.7rem;
-          margin-bottom: 1.25rem;
+          font-size: clamp(1.4rem, 3vw, 1.85rem);
+          margin-bottom: 1.15rem;
           font-weight: 700;
-          line-height: 1.2;
+          line-height: 1.25;
         }
         .about-text h3 span {
           background: var(--gradient-text);
@@ -144,41 +159,86 @@ function About() {
         }
         .about-text p {
           color: var(--text-secondary);
-          font-size: 0.97rem;
+          font-size: 0.96rem;
           margin-bottom: 1rem;
-          line-height: 1.85;
+          line-height: 1.8;
         }
-        .about-text p strong { color: var(--text-primary); }
+        .about-text p strong {
+          color: var(--text-primary);
+        }
+
+        .about-highlights {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin: 1.25rem 0;
+          text-align: left;
+        }
+        .about-highlight-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 0.9rem;
+          color: var(--text-primary);
+        }
+        .about-highlight-item svg {
+          color: var(--accent-cyan);
+          flex-shrink: 0;
+        }
 
         .about-badge-row {
           display: flex;
           flex-wrap: wrap;
           gap: 0.45rem;
-          margin-top: 1.5rem;
+          margin-top: 1.25rem;
         }
         .about-badge {
-          background: rgba(124,58,237,0.08);
-          border: 1px solid rgba(124,58,237,0.2);
+          background: var(--bg-card);
+          border: 1px solid var(--border);
           border-radius: var(--radius-full);
-          color: #c4b5fd;
+          color: var(--text-secondary);
           font-size: 0.76rem;
           font-weight: 600;
-          padding: 4px 14px;
-          transition: background var(--transition), border-color var(--transition);
+          padding: 4px 13px;
+          transition: background var(--transition), border-color var(--transition), color var(--transition);
         }
         .about-badge:hover {
-          background: rgba(124,58,237,0.18);
-          border-color: rgba(124,58,237,0.45);
+          background: var(--accent-glow2);
+          border-color: var(--accent-cyan);
+          color: var(--accent-cyan);
+        }
+
+        .about-cta-row {
+          margin-top: 2rem;
+          display: flex;
+        }
+
+        @media (max-width: 480px) {
+          .about-stats {
+            gap: 0.5rem;
+          }
+          .stat-card {
+            padding: 0.75rem 0.4rem;
+          }
+          .stat-value {
+            font-size: 1.2rem;
+          }
+          .stat-label {
+            font-size: 0.65rem;
+          }
+          .about-cta-row .btn-accent {
+            width: 100%;
+          }
         }
       `}</style>
 
       <section id="about">
-        <div className="container-fluid px-0">
+        <div className="container">
           <div className="reveal">
             <SectionTitle
-              overline="Get to know me"
+              overline="Executive Summary"
               title="About <span class='accent-word'>Me</span>"
-              subtitle="Passionate developer with a drive to build impactful, intelligent products."
+              subtitle="Full-stack engineer and AI automation specialist turning complex logic into polished, production-ready software."
             />
           </div>
 
@@ -191,8 +251,9 @@ function About() {
                 <div className="about-avatar-img-wrap">
                   <img
                     src="/images/profile_photo.png"
-                    alt="Muhammad Noman Ashraf - Freelance Full Stack Developer & AI Automation Expert"
+                    alt="Muhammad Noman Ashraf - Full Stack Developer & AI Automation Specialist"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -211,20 +272,28 @@ function About() {
             {/* Text side */}
             <div className="about-text reveal-right">
               <h3>
-                Building Digital Experiences <span>That Matter</span>
+                Engineering Intelligent Systems &amp; <span>Scalable Frontends</span>
               </h3>
 
               <p>
-                I'm a passionate <strong>freelance full stack developer</strong> and mobile app builder with over 2 years of hands-on experience crafting high-performance applications — from concept to deployment. Whether you want to <strong>hire a React developer</strong> for your next web platform or need a pixel-perfect mobile app, I've got you covered.
+                I am a <strong>Full Stack React &amp; Node.js Developer</strong> with a deep focus on <strong>Agentic AI Automation</strong>. I engineer high-performance web and mobile platforms with clean architecture, fluid responsiveness, and state-of-the-art AI capabilities.
               </p>
 
               <p>
-                Beyond traditional development, I am an <strong>AI automation expert</strong> and <strong>LangGraph &amp; CrewAI developer</strong> — building intelligent multi-agent automation pipelines using n8n, the OpenAI SDK, CrewAI, AutoGen, and LangGraph. I love making complex workflows simple, powerful, and autonomous.
+                As an <strong>AI Automation Engineer</strong>, I build autonomous multi-agent pipelines with <strong>AutoGen, LangGraph, and CrewAI</strong>, alongside complex enterprise integrations via <strong>n8n</strong> and custom Python backends.
               </p>
 
-              <p>
-                As an active freelancer on <strong>Upwork &amp; Fiverr</strong>, I've collaborated with international clients to deliver scalable, maintainable solutions — always on time and beyond expectations.
-              </p>
+              <div className="about-highlights">
+                <div className="about-highlight-item">
+                  <FiCheckCircle /> <span>Proven freelance delivery across Upwork &amp; Fiverr clients worldwide</span>
+                </div>
+                <div className="about-highlight-item">
+                  <FiCheckCircle /> <span>Specialist in React, Node.js, Python FastAPI, and Agentic AI graphs</span>
+                </div>
+                <div className="about-highlight-item">
+                  <FiCheckCircle /> <span>Production RAG pipelines with Vector DBs (ChromaDB, Pinecone, OpenAI)</span>
+                </div>
+              </div>
 
               <div className="about-badge-row">
                 {BADGES.map((b) => (
@@ -232,15 +301,14 @@ function About() {
                 ))}
               </div>
 
-              <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'inherit' }}>
+              <div className="about-cta-row">
                 <a
                   href="/doc/Noman Ashraf SE-AI.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="btn-accent"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                 >
-                  <FiDownload size={16} /> Download CV (PDF)
+                  <FiDownload size={16} /> Download Resume (PDF)
                 </a>
               </div>
             </div>

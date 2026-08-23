@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { id: 'contact',  label: 'Contact',  href: '/#contact' },
 ];
 
-function Navbar({ activeSection }) {
+function Navbar({ activeSection, themeToggleSlot }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
   const location = useLocation();
@@ -22,6 +22,27 @@ function Navbar({ activeSection }) {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  // Handle ESC key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && open) setOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [open]);
 
   const handleNavClick = (href) => {
     setOpen(false);
@@ -44,18 +65,22 @@ function Navbar({ activeSection }) {
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 1000;
-          height: 68px;
+          height: 72px;
           display: flex;
           align-items: center;
-          padding: 0 1.5rem;
-          transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+          padding: 0 1.25rem;
+          transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+          background: transparent;
+        }
+        @media (min-width: 768px) {
+          .nav-root { padding: 0 2rem; }
         }
         .nav-root.scrolled {
-          background: rgba(10,10,15,0.85);
+          background: var(--nav-bg, rgba(10, 10, 18, 0.88));
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(124,58,237,0.2);
-          box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+          border-bottom: 1px solid var(--border);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
         }
         .nav-inner {
           width: 100%;
@@ -64,10 +89,11 @@ function Navbar({ activeSection }) {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          gap: 1rem;
         }
         .nav-logo {
           font-family: var(--font-heading);
-          font-size: 1.3rem;
+          font-size: 1.35rem;
           font-weight: 800;
           background: var(--gradient-text);
           -webkit-background-clip: text;
@@ -76,6 +102,14 @@ function Navbar({ activeSection }) {
           cursor: pointer;
           text-decoration: none;
           letter-spacing: -0.5px;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+        }
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
         }
         .nav-links {
           display: flex;
@@ -91,7 +125,7 @@ function Navbar({ activeSection }) {
           color: var(--text-secondary);
           font-size: 0.92rem;
           font-weight: 500;
-          padding: 6px 14px;
+          padding: 8px 14px;
           position: relative;
           cursor: pointer;
           transition: color var(--transition);
@@ -120,129 +154,225 @@ function Navbar({ activeSection }) {
         .nav-links li button.active::after,
         .nav-links li a:hover::after,
         .nav-links li a.blog-active::after { transform: scaleX(1); }
-        .nav-links li button.active { color: #a78bfa; }
+        .nav-links li button.active { color: var(--accent); }
         .nav-blog-link {
           color: var(--text-secondary) !important;
         }
         .nav-hire-btn {
           margin-left: 0.5rem;
-          padding: 7px 20px !important;
+          padding: 8px 20px !important;
           background: var(--gradient-accent) !important;
           color: #fff !important;
           border-radius: var(--radius-full) !important;
           font-weight: 600 !important;
           font-size: 0.88rem !important;
+          box-shadow: 0 4px 14px var(--accent-glow);
           transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition) !important;
         }
         .nav-hire-btn::after { display: none !important; }
         .nav-hire-btn:hover {
-          opacity: 0.88 !important;
+          opacity: 0.92 !important;
           transform: translateY(-2px) !important;
-          box-shadow: 0 6px 24px rgba(124,58,237,0.4) !important;
+          box-shadow: 0 6px 22px var(--accent-glow) !important;
         }
         .nav-hamburger {
           display: none;
-          background: rgba(124,58,237,0.1);
-          border: 1px solid rgba(124,58,237,0.3);
+          background: var(--bg-card);
+          border: 1px solid var(--border);
           border-radius: var(--radius-sm);
-          color: #a78bfa;
-          padding: 7px;
+          color: var(--text-primary);
+          padding: 8px;
           cursor: pointer;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
           line-height: 1;
-          transition: background var(--transition);
+          transition: background var(--transition), border-color var(--transition);
+          align-items: center;
+          justify-content: center;
         }
-        .nav-hamburger:hover { background: rgba(124,58,237,0.2); }
+        .nav-hamburger:hover {
+          background: var(--accent-glow2);
+          border-color: var(--border-hover);
+        }
+
+        /* Mobile Drawer Backdrop */
+        .mobile-backdrop {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+          z-index: 998;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.3s ease;
+        }
+        .mobile-backdrop.open {
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        /* Mobile Drawer */
         .mobile-drawer {
           position: fixed;
-          top: 68px; right: 0;
-          width: min(280px, 85vw);
-          height: calc(100vh - 68px);
-          background: rgba(10,10,20,0.97);
-          backdrop-filter: blur(24px);
-          border-left: 1px solid rgba(124,58,237,0.2);
+          top: 0;
+          right: 0;
+          width: min(300px, 85vw);
+          height: 100vh;
+          height: 100dvh;
+          background: var(--bg-secondary);
+          border-left: 1px solid var(--border);
           padding: 1.5rem 1.25rem;
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
-          transform: translateX(110%);
-          transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+          gap: 0.6rem;
+          transform: translateX(105%);
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           z-index: 999;
+          box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4);
+          overflow-y: auto;
         }
         .mobile-drawer.open { transform: translateX(0); }
+
+        .mobile-drawer-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-bottom: 1rem;
+          margin-bottom: 0.5rem;
+          border-bottom: 1px solid var(--border);
+        }
+        .mobile-drawer-close {
+          background: var(--bg-card);
+          border: 1px solid var(--border);
+          color: var(--text-primary);
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 1.1rem;
+        }
+
         .mobile-drawer button,
         .mobile-drawer a {
           background: none;
           border: none;
-          border-bottom: 1px solid rgba(124,58,237,0.1);
+          border-bottom: 1px solid var(--border);
           color: var(--text-secondary);
-          font-size: 1rem;
+          font-size: 1.05rem;
           font-weight: 500;
           text-align: left;
           cursor: pointer;
-          padding: 12px 8px;
-          transition: color var(--transition), padding var(--transition);
+          padding: 12px 10px;
+          transition: color var(--transition), padding var(--transition), background var(--transition);
           display: block;
           text-decoration: none;
+          border-radius: var(--radius-sm);
         }
         .mobile-drawer button:hover,
         .mobile-drawer a:hover,
-        .mobile-drawer button.active { color: #a78bfa; padding-left: 16px; }
-        @media (max-width: 820px) {
+        .mobile-drawer button.active {
+          color: var(--accent);
+          padding-left: 16px;
+          background: var(--accent-glow2);
+        }
+        .mobile-drawer-footer {
+          margin-top: auto;
+          padding-top: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        @media (max-width: 860px) {
           .nav-links { display: none; }
-          .nav-hamburger { display: flex; align-items: center; }
+          .nav-hamburger { display: flex; }
         }
       `}</style>
 
-      <nav className={`nav-root ${scrolled ? 'scrolled' : ''}`}>
+      <nav className={`nav-root ${scrolled ? 'scrolled' : ''}`} aria-label="Main Navigation">
         <div className="nav-inner">
-          <Link to="/" className="nav-logo">NomiDevX</Link>
+          <Link to="/" className="nav-logo" aria-label="NomiDevX Homepage">
+            NomiDevX
+          </Link>
 
-          <ul className="nav-links">
-            {NAV_LINKS.map(({ id, label, href }) => (
-              <li key={id}>
-                <button
-                  className={isHome && activeSection === id ? 'active' : ''}
-                  onClick={() => handleNavClick(href)}
-                  aria-label={`Go to ${label}`}
-                >{label}</button>
+          <div className="nav-actions">
+            <ul className="nav-links">
+              {NAV_LINKS.map(({ id, label, href }) => (
+                <li key={id}>
+                  <button
+                    className={isHome && activeSection === id ? 'active' : ''}
+                    onClick={() => handleNavClick(href)}
+                    aria-label={`Navigate to ${label}`}
+                  >{label}</button>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/blog"
+                  className={`nav-blog-link ${location.pathname.startsWith('/blog') ? 'blog-active' : ''}`}
+                >Blog</Link>
               </li>
-            ))}
-            <li>
-              <Link
-                to="/blog"
-                className={`nav-blog-link ${location.pathname.startsWith('/blog') ? 'blog-active' : ''}`}
-              >Blog</Link>
-            </li>
-            <li>
-              <a
-                href="/doc/Noman Ashraf SE-AI.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="nav-blog-link"
-              >Resume</a>
-            </li>
-            <li>
-              <a
-                href="https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share"
-                target="_blank"
-                rel="noreferrer"
-                className="nav-hire-btn"
-              >Hire Me</a>
-            </li>
-          </ul>
+              <li>
+                <a
+                  href="/doc/Noman Ashraf SE-AI.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="nav-blog-link"
+                >Resume</a>
+              </li>
+              <li>
+                <a
+                  href="https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="nav-hire-btn"
+                >Hire Me</a>
+              </li>
+            </ul>
 
-          <button
-            className="nav-hamburger"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            {open ? <FiX /> : <FiMenu />}
-          </button>
+            {themeToggleSlot}
+
+            <button
+              className="nav-hamburger"
+              onClick={() => setOpen(!open)}
+              aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={open}
+              aria-controls="mobile-nav-drawer"
+            >
+              {open ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
         </div>
       </nav>
 
-      <div className={`mobile-drawer ${open ? 'open' : ''}`}>
+      {/* Backdrop */}
+      <div
+        className={`mobile-backdrop ${open ? 'open' : ''}`}
+        onClick={() => setOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Drawer */}
+      <div
+        id="mobile-nav-drawer"
+        className={`mobile-drawer ${open ? 'open' : ''}`}
+        role="dialog"
+        aria-label="Mobile Navigation"
+      >
+        <div className="mobile-drawer-header">
+          <span className="nav-logo">NomiDevX</span>
+          <button
+            className="mobile-drawer-close"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+          >
+            <FiX />
+          </button>
+        </div>
+
         {NAV_LINKS.map(({ id, label, href }) => (
           <button
             key={id}
@@ -256,14 +386,18 @@ function Navbar({ activeSection }) {
           target="_blank"
           rel="noreferrer"
           onClick={() => setOpen(false)}
-        >Resume</a>
-        <a
-          href="https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share"
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => setOpen(false)}
-          style={{ color: '#a78bfa', fontWeight: 700 }}
-        >Hire Me →</a>
+        >Resume (PDF)</a>
+
+        <div className="mobile-drawer-footer">
+          <a
+            href="https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-accent"
+            onClick={() => setOpen(false)}
+            style={{ width: '100%', justifyContent: 'center' }}
+          >Hire Me on Upwork →</a>
+        </div>
       </div>
     </>
   );
