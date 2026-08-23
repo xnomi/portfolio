@@ -1,77 +1,83 @@
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
-import { SiFlutter, SiPython, SiReact, SiNodedotjs } from 'react-icons/si';
-import { FiLayout, FiServer, FiCpu, FiGitBranch } from 'react-icons/fi';
+import { SiFlutter, SiAndroid, SiN8N, SiZapier, SiOpenai, SiPython } from 'react-icons/si';
+import { FiCpu, FiGitBranch, FiSmartphone, FiCheck, FiLayers, FiActivity, FiZap } from 'react-icons/fi';
 import { FaRobot, FaBrain } from 'react-icons/fa';
 
-const CATEGORIES = [
+const SKILL_PILLARS = [
   {
-    icon: <FiLayout size={24} />,
-    title: 'Frontend & React Ecosystem',
-    color: '#06b6d4',
-    gradientFrom: 'rgba(6,182,212,0.15)',
-    description: 'Crafting pixel-perfect, accessible, and ultra-fast responsive web frontends and mobile apps.',
-    skills: [
-      { icon: <SiReact size={18} />,   name: 'React.js / Web Architecture', level: 92 },
-      { icon: <SiFlutter size={18} />, name: 'Flutter & Dart (iOS/Android)', level: 88 },
-    ],
-    tags: ['React.js', 'State Management (Redux/Context)', 'TailwindCSS / Vanilla CSS', 'REST & GraphQL APIs', 'Responsive Design', 'Next.js / Vite'],
-  },
-  {
-    icon: <FiServer size={24} />,
-    title: 'Backend & Cloud Architecture',
-    color: '#10b981',
-    gradientFrom: 'rgba(16,185,129,0.15)',
-    description: 'Engineering robust RESTful APIs, distributed microservices, and high-performance databases.',
-    skills: [
-      { icon: <SiNodedotjs size={18} />, name: 'Node.js (Express / Fastify)', level: 90 },
-      { icon: <SiPython size={18} />,    name: 'Python (FastAPI / Django)', level: 88 },
-    ],
-    tags: ['Node.js (Express)', 'FastAPI', 'PostgreSQL / MySQL', 'MongoDB / Redis', 'Firebase / Supabase', 'Docker', 'AWS (EC2/S3)'],
-  },
-  {
-    icon: <FaRobot size={24} />,
-    title: 'Agentic AI & LLMs',
+    id: 'agentic-ai',
+    title: 'Agentic AI & Swarms',
+    badge: 'Core Specialization',
+    icon: <FaBrain size={26} />,
     color: '#8b5cf6',
-    gradientFrom: 'rgba(139,92,246,0.15)',
-    description: 'Building autonomous multi-agent coordination frameworks and stateful LLM graph charts.',
-    skills: [
-      { icon: <FaBrain size={18} />,   name: 'AutoGen & CrewAI Systems', level: 92 },
-      { icon: <FiCpu size={18} />,     name: 'LangGraph State Charts & RAG', level: 90 },
+    glowColor: 'rgba(139, 92, 246, 0.25)',
+    description: 'Engineering autonomous multi-agent swarms, stateful execution graphs, and self-healing LLM pipelines with memory & validation.',
+    coreTools: [
+      { name: 'LangGraph', highlight: true, note: 'Stateful Graphs' },
+      { name: 'CrewAI', highlight: true, note: 'Multi-Agent Teams' },
+      { name: 'AutoGen', highlight: true, note: 'Conversational Swarms' },
+      { name: 'LangSmith', highlight: true, note: 'Tracing & Evals' },
+      { name: 'ChromaDB / Pinecone', highlight: false, note: 'Vector DB / RAG' },
+      { name: 'OpenAI / DeepSeek SDK', highlight: false, note: 'LLM Reasoning' },
     ],
-    tags: ['AutoGen', 'LangGraph', 'CrewAI', 'OpenAI & DeepSeek APIs', 'RAG & Vector DBs (ChromaDB)', 'Prompt Engineering', 'LangSmith Monitoring'],
+    capabilities: [
+      'Multi-Agent Coordination & Supervisor Routing',
+      'LangGraph State Charts with Human-in-the-Loop',
+      'Semantic Search & Vector Cosine Embeddings',
+      'Prompt Optimization & Schema-Enforced JSON Outputs',
+      'LangSmith Performance Tracing & Token Optimization',
+    ],
   },
   {
-    icon: <FiGitBranch size={24} />,
-    title: 'n8n & Workflow Automation',
-    color: '#f59e0b',
-    gradientFrom: 'rgba(245,158,11,0.15)',
-    description: 'Building end-to-end webhook pipelines, automated data synchronizations, and Slack/Telegram bots.',
-    skills: [
-      { icon: <FiGitBranch size={18} />, name: 'n8n Enterprise Automation', level: 94 },
-      { icon: <FiCpu size={18} />,       name: 'Webhook & Third-Party APIs', level: 90 },
+    id: 'ai-automation',
+    title: 'AI Automation & Webhooks',
+    badge: 'Enterprise Integration',
+    icon: <FiGitBranch size={26} />,
+    color: '#00f5a0',
+    glowColor: 'rgba(0, 245, 160, 0.25)',
+    description: 'Architecting high-scale workflow automations, API event listeners, and business logic pipelines across enterprise apps.',
+    coreTools: [
+      { name: 'n8n', highlight: true, note: 'Enterprise Self-Hosted' },
+      { name: 'Zapier', highlight: true, note: 'Multi-App Integrations' },
+      { name: 'Make.com', highlight: true, note: 'Visual Logic Flows' },
+      { name: 'Webhooks & REST APIs', highlight: false, note: 'Real-Time Sync' },
+      { name: 'Slack & Telegram Bots', highlight: false, note: 'ChatOps Bots' },
+      { name: 'Gmail & Drive APIs', highlight: false, note: 'Document Ingest' },
     ],
-    tags: ['n8n Workflows', 'Slack & Telegram Bots', 'Gmail / Drive APIs', 'OAuth2 / Webhooks', 'Automated Triage', 'Error Recovery Pipelines'],
+    capabilities: [
+      'Automated Customer Triage & Smart Ticket Routing',
+      'Accounts Payable & OCR Invoice Processing',
+      'Bi-Directional E-Commerce CRM Sync (Shopify/Odoo)',
+      'Scheduled Cron Pipelines & Data Scrubbing Workflows',
+      'Fault-Tolerant Error Handling & Webhook Retry Queues',
+    ],
+  },
+  {
+    id: 'mobile-apps',
+    title: 'Mobile App Development',
+    badge: 'Cross-Platform Native',
+    icon: <FiSmartphone size={26} />,
+    color: '#00d2ff',
+    glowColor: 'rgba(0, 210, 255, 0.25)',
+    description: 'Building high-performance, pixel-perfect iOS & Android mobile applications with offline storage and on-device AI.',
+    coreTools: [
+      { name: 'Flutter', highlight: true, note: 'iOS & Android' },
+      { name: 'Android (Java/Kotlin)', highlight: true, note: 'Native Components' },
+      { name: 'Dart Language', highlight: true, note: 'Object-Oriented' },
+      { name: 'Provider / Bloc', highlight: false, note: 'State Management' },
+      { name: 'Google ML Kit', highlight: false, note: 'On-Device Vision' },
+      { name: 'Firebase / SQLite', highlight: false, note: 'Backend & Offline DB' },
+    ],
+    capabilities: [
+      'Pixel-Perfect Responsive Mobile UI / UX (Figma)',
+      'Clean Architecture & Modular Codebase Structure',
+      'Real-Time Computer Vision & Image Classification',
+      'Secure Local Database Caching & State Management',
+      'App Store & Google Play Store Deployment Ready',
+    ],
   },
 ];
-
-function SkillBar({ name, icon, level, color }) {
-  return (
-    <div className="skill-bar-item">
-      <div className="skill-bar-header">
-        <span className="skill-bar-icon" style={{ color }}>{icon}</span>
-        <span className="skill-bar-name">{name}</span>
-        <span className="skill-bar-pct" style={{ color }}>{level}%</span>
-      </div>
-      <div className="skill-bar-track">
-        <div
-          className="skill-bar-fill"
-          style={{ width: `${level}%`, background: `linear-gradient(90deg, ${color}99, ${color})` }}
-        />
-      </div>
-    </div>
-  );
-}
 
 function Skills() {
   return (
@@ -79,148 +85,181 @@ function Skills() {
       <style>{`
         #skills {
           background: var(--bg-primary);
+          position: relative;
         }
 
-        .skills-grid {
+        .skills-pillars-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.5rem;
-          max-width: 1100px;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.6rem;
+          max-width: 1240px;
           margin: 0 auto;
         }
 
-        @media (max-width: 800px) {
-          .skills-grid {
+        @media (max-width: 1024px) {
+          .skills-pillars-grid {
             grid-template-columns: 1fr;
-            gap: 1.25rem;
+            gap: 1.5rem;
           }
         }
 
-        .skill-card {
+        .skill-pillar-card {
           background: var(--bg-card);
           border: 1px solid var(--border);
           border-radius: var(--radius-xl);
-          padding: 2rem 1.75rem;
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
+          padding: 2.25rem 1.85rem;
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+          display: flex;
+          flex-direction: column;
           position: relative;
           overflow: hidden;
+          box-shadow: var(--shadow-card);
           transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
         }
-        .skill-card::before {
+        .skill-pillar-card::before {
           content: '';
           position: absolute;
           top: 0; left: 0; right: 0;
-          height: 2px;
-          background: var(--gradient-accent);
-          opacity: 0;
-          transition: opacity var(--transition);
+          height: 3px;
+          opacity: 0.8;
+          transition: opacity var(--transition), height var(--transition);
         }
-        .skill-card:hover {
-          transform: translateY(-5px);
+        .skill-pillar-card:hover {
+          transform: translateY(-7px);
         }
-        .skill-card:hover::before { opacity: 1; }
+        .skill-pillar-card:hover::before {
+          height: 4px;
+          opacity: 1;
+        }
 
-        .skill-card-bg {
-          position: absolute;
-          bottom: -40px; right: -40px;
-          width: 180px; height: 180px;
-          border-radius: 50%;
-          filter: blur(50px);
-          pointer-events: none;
-          opacity: 0.4;
-          transition: opacity var(--transition);
-        }
-        .skill-card:hover .skill-card-bg { opacity: 0.7; }
-
-        .skill-card-header {
+        .pillar-header {
           display: flex;
-          align-items: center;
-          gap: 0.85rem;
-          margin-bottom: 0.75rem;
+          align-items: flex-start;
+          justify-content: space-between;
+          margin-bottom: 1.25rem;
         }
-        .skill-card-icon {
-          width: 48px; height: 48px;
+        .pillar-icon-wrap {
+          width: 52px;
+          height: 52px;
           border-radius: var(--radius-md);
-          display: flex; align-items: center; justify-content: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           flex-shrink: 0;
+          transition: transform var(--transition);
         }
-        .skill-card-title {
+        .skill-pillar-card:hover .pillar-icon-wrap {
+          transform: scale(1.08) rotate(3deg);
+        }
+
+        .pillar-badge {
+          font-size: 0.72rem;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          padding: 4px 12px;
+          border-radius: var(--radius-full);
+          border: 1px solid var(--border);
+          background: var(--bg-secondary);
+        }
+
+        .pillar-title {
           font-family: var(--font-heading);
-          font-size: 1.15rem;
-          font-weight: 700;
-          margin: 0;
-        }
-        .skill-card-desc {
-          font-size: 0.86rem;
-          color: var(--text-secondary);
-          line-height: 1.6;
-          margin-bottom: 1.4rem;
-        }
-
-        /* Progress bars */
-        .skill-bar-item { margin-bottom: 1rem; }
-        .skill-bar-header {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          margin-bottom: 6px;
-        }
-        .skill-bar-icon {
-          display: flex;
-          align-items: center;
-          flex-shrink: 0;
-        }
-        .skill-bar-name {
-          font-size: 0.86rem;
-          font-weight: 600;
+          font-size: 1.35rem;
+          font-weight: 800;
           color: var(--text-primary);
-          flex: 1;
+          margin-bottom: 0.65rem;
+          line-height: 1.25;
         }
-        .skill-bar-pct {
-          font-size: 0.78rem;
-          font-weight: 700;
-        }
-        .skill-bar-track {
-          height: 6px;
-          background: var(--border);
-          border-radius: 3px;
-          overflow: hidden;
-        }
-        .skill-bar-fill {
-          height: 100%;
-          border-radius: 3px;
-          transition: width 1.2s ease;
+        .pillar-desc {
+          font-size: 0.88rem;
+          color: var(--text-secondary);
+          line-height: 1.65;
+          margin-bottom: 1.5rem;
         }
 
-        /* Tags */
-        .skill-tags {
+        /* Core Tools Section */
+        .pillar-tools-section {
+          margin-bottom: 1.5rem;
+        }
+        .section-mini-label {
+          font-size: 0.74rem;
+          font-weight: 700;
+          letter-spacing: 0.6px;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          margin-bottom: 0.75rem;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .tool-chips-grid {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.35rem;
-          margin-top: 1.25rem;
+          gap: 0.45rem;
         }
-        .skill-tag {
+        .tool-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 12px;
+          border-radius: var(--radius-sm);
+          font-size: 0.78rem;
+          font-weight: 600;
           background: var(--bg-secondary);
           border: 1px solid var(--border);
-          border-radius: var(--radius-full);
-          color: var(--text-secondary);
-          font-size: 0.72rem;
-          font-weight: 500;
-          padding: 3px 10px;
-          transition: color var(--transition), border-color var(--transition);
-        }
-        .skill-card:hover .skill-tag {
           color: var(--text-primary);
-          border-color: var(--border-hover);
+          transition: border-color var(--transition), background var(--transition), transform var(--transition);
+        }
+        .tool-chip.featured {
+          border-color: var(--chip-border, var(--border));
+          background: var(--chip-bg, var(--bg-secondary));
+          color: var(--chip-text, var(--text-primary));
+        }
+        .tool-chip:hover {
+          transform: translateY(-2px);
+          border-color: var(--accent-cyan);
+        }
+        .tool-chip-note {
+          font-size: 0.68rem;
+          color: var(--text-muted);
+          font-weight: 500;
         }
 
-        @media (max-width: 480px) {
-          .skill-card {
-            padding: 1.5rem 1.25rem;
+        /* Capabilities List */
+        .pillar-capabilities {
+          margin-top: auto;
+          padding-top: 1.25rem;
+          border-top: 1px solid var(--border-subtle);
+        }
+        .capability-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.55rem;
+        }
+        .capability-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 9px;
+          font-size: 0.84rem;
+          color: var(--text-secondary);
+          line-height: 1.5;
+        }
+        .capability-icon {
+          flex-shrink: 0;
+          margin-top: 3px;
+        }
+
+        @media (max-width: 640px) {
+          .skill-pillar-card {
+            padding: 1.6rem 1.25rem;
           }
-          .skill-card-title {
-            font-size: 1.05rem;
+          .pillar-title {
+            font-size: 1.2rem;
           }
         }
       `}</style>
@@ -229,44 +268,96 @@ function Skills() {
         <div className="container">
           <div className="reveal">
             <SectionTitle
-              overline="Technical Arsenal"
-              title="My <span class='accent-word'>Skills</span>"
-              subtitle="Production-tested technologies across full-stack web, scalable backends, and agentic AI architectures."
+              overline="Core Engineering Pillars"
+              title="Technical <span class='accent-word'>Proficiency</span>"
+              subtitle="Specialized expertise across autonomous Agentic AI swarms, enterprise workflow automation, and cross-platform mobile applications."
             />
           </div>
 
-          <div className="skills-grid">
-            {CATEGORIES.map(({ icon, title, color, gradientFrom, description, skills, tags }, i) => (
+          <div className="skills-pillars-grid">
+            {SKILL_PILLARS.map((pillar, i) => (
               <div
-                className={`skill-card reveal delay-${i + 1}`}
-                key={title}
-                style={{ borderColor: `${color}30` }}
+                key={pillar.id}
+                className={`skill-pillar-card reveal delay-${i + 1}`}
+                style={{
+                  '--pillar-color': pillar.color,
+                  '--chip-bg': `${pillar.color}12`,
+                  '--chip-border': `${pillar.color}35`,
+                  '--chip-text': pillar.color,
+                }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = `${color}80`;
-                  e.currentTarget.style.boxShadow   = `0 12px 36px ${color}22`;
+                  e.currentTarget.style.borderColor = `${pillar.color}75`;
+                  e.currentTarget.style.boxShadow   = `0 16px 45px ${pillar.glowColor}`;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = `${color}30`;
-                  e.currentTarget.style.boxShadow   = 'none';
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.boxShadow   = 'var(--shadow-card)';
                 }}
               >
-                <div className="skill-card-bg" style={{ background: gradientFrom }} />
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 0, left: 0, right: 0,
+                    height: '3px',
+                    background: pillar.color,
+                    boxShadow: `0 0 16px ${pillar.color}`,
+                  }}
+                />
 
-                <div className="skill-card-header">
-                  <div className="skill-card-icon" style={{ background: `${color}18`, color }}>
-                    {icon}
+                <div className="pillar-header">
+                  <div
+                    className="pillar-icon-wrap"
+                    style={{
+                      background: `${pillar.color}15`,
+                      color: pillar.color,
+                      border: `1px solid ${pillar.color}30`,
+                      boxShadow: `0 0 20px ${pillar.color}20`
+                    }}
+                  >
+                    {pillar.icon}
                   </div>
-                  <h3 className="skill-card-title" style={{ color }}>{title}</h3>
+                  <span
+                    className="pillar-badge"
+                    style={{ color: pillar.color, borderColor: `${pillar.color}40` }}
+                  >
+                    {pillar.badge}
+                  </span>
                 </div>
 
-                {description && <p className="skill-card-desc">{description}</p>}
+                <h3 className="pillar-title">{pillar.title}</h3>
+                <p className="pillar-desc">{pillar.description}</p>
 
-                {skills.map((s) => (
-                  <SkillBar key={s.name} {...s} color={color} />
-                ))}
+                <div className="pillar-tools-section">
+                  <div className="section-mini-label">
+                    <FiLayers size={12} style={{ color: pillar.color }} />
+                    <span>Core Frameworks &amp; Tools</span>
+                  </div>
+                  <div className="tool-chips-grid">
+                    {pillar.coreTools.map((t) => (
+                      <div
+                        key={t.name}
+                        className={`tool-chip ${t.highlight ? 'featured' : ''}`}
+                      >
+                        <span>{t.name}</span>
+                        {t.note && <span className="tool-chip-note">· {t.note}</span>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-                <div className="skill-tags">
-                  {tags.map((t) => <span className="skill-tag" key={t}>{t}</span>)}
+                <div className="pillar-capabilities">
+                  <div className="section-mini-label">
+                    <FiZap size={12} style={{ color: pillar.color }} />
+                    <span>Production Capabilities</span>
+                  </div>
+                  <ul className="capability-list">
+                    {pillar.capabilities.map((cap) => (
+                      <li key={cap} className="capability-item">
+                        <FiCheck size={14} className="capability-icon" style={{ color: pillar.color }} />
+                        <span>{cap}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
