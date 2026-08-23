@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import SectionTitle from './ui/SectionTitle';
 import {
-  FiGithub, FiPlay, FiX, FiArrowRight, FiExternalLink,
-  FiCpu, FiLayers, FiCode, FiSmartphone, FiSearch, FiCheck, FiVideo
+  FiGithub, FiArrowRight, FiExternalLink,
+  FiCpu, FiLayers, FiCode, FiSmartphone, FiSearch, FiCheck
 } from 'react-icons/fi';
 import { SiUpwork, SiFiverr } from 'react-icons/si';
 
@@ -26,10 +26,9 @@ const PROJECTS = [
     highlights: ['Multi-Stage LangGraph State Machine', 'Vector Cosine Similarity Matching', 'Auto-Drafted Cover Letters', 'Slack Real-time Alerts'],
     tags: ['LangGraph', 'Python', 'Vector DB', 'Slack API', 'OpenAI', 'Agentic AI'],
     category: 'agentic-ai',
-    video: '/videos/job-search-agent.mp4',
     isHero: true,
     links: [
-      { href: 'https://github.com/NomiDevx', label: 'GitHub Repo', icon: <FiGithub size={13} /> },
+      { href: 'https://github.com/NomiDevx', label: 'GitHub Repo', primary: true, icon: <FiGithub size={13} /> },
     ],
   },
   {
@@ -45,7 +44,7 @@ const PROJECTS = [
     category: 'automation',
     isHero: true,
     links: [
-      { href: 'https://github.com/NomiDevx', label: 'GitHub Repo', icon: <FiGithub size={13} /> },
+      { href: 'https://github.com/NomiDevx', label: 'GitHub Repo', primary: true, icon: <FiGithub size={13} /> },
     ],
   },
   {
@@ -247,7 +246,7 @@ const PROJECTS = [
   },
 ];
 
-function HeroProjectCard({ project, onWatchVideo }) {
+function HeroProjectCard({ project }) {
   return (
     <div
       className="hero-project-card"
@@ -260,16 +259,6 @@ function HeroProjectCard({ project, onWatchVideo }) {
           <span className="hero-category-pill" style={{ color: project.categoryColor }}>
             {project.categoryBadge}
           </span>
-          {project.video && (
-            <button
-              className="hero-play-pulse-btn"
-              onClick={() => onWatchVideo(project.video)}
-              aria-label="Play demo video"
-              title="Watch Demo Video"
-            >
-              <FiPlay size={20} />
-            </button>
-          )}
         </div>
       </div>
 
@@ -297,14 +286,6 @@ function HeroProjectCard({ project, onWatchVideo }) {
         </div>
 
         <div className="hero-action-row">
-          {project.video && (
-            <button
-              onClick={() => onWatchVideo(project.video)}
-              className="project-action-btn primary"
-            >
-              <FiVideo size={14} /> Watch Demo Video
-            </button>
-          )}
           {project.links.map(({ href, label, primary, icon }) => (
             <a
               key={label}
@@ -322,7 +303,7 @@ function HeroProjectCard({ project, onWatchVideo }) {
   );
 }
 
-function GridProjectCard({ project, onWatchVideo }) {
+function GridProjectCard({ project }) {
   return (
     <div
       className="grid-project-card"
@@ -385,7 +366,6 @@ function GridProjectCard({ project, onWatchVideo }) {
 function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [videoSrc, setVideoSrc] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
   // Category counts
@@ -582,28 +562,6 @@ function Projects() {
           backdrop-filter: blur(12px);
           box-shadow: 0 4px 16px rgba(0,0,0,0.5);
           z-index: 3;
-        }
-
-        .hero-play-pulse-btn {
-          position: absolute;
-          top: 50%; left: 50%;
-          transform: translate(-50%, -50%);
-          width: 58px; height: 58px;
-          border-radius: 50%;
-          background: var(--gradient-accent);
-          color: #fff;
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          box-shadow: 0 0 25px var(--accent-glow), 0 0 50px var(--accent-glow);
-          z-index: 4;
-          transition: transform var(--transition), box-shadow var(--transition);
-        }
-        .hero-play-pulse-btn:hover {
-          transform: translate(-50%, -50%) scale(1.15);
-          box-shadow: 0 0 35px var(--accent-glow), 0 0 70px var(--cyan-glow);
         }
 
         .hero-card-content-col {
@@ -862,71 +820,6 @@ function Projects() {
           transform: translateY(-2px);
           box-shadow: 0 6px 20px var(--accent-glow);
         }
-
-        /* Video Modal */
-        .video-modal-backdrop {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.88);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 2000;
-          padding: 1.25rem;
-        }
-        .video-modal-body {
-          background: var(--bg-secondary);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-lg);
-          max-width: 880px;
-          width: 100%;
-          position: relative;
-          box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
-          overflow: hidden;
-        }
-        .video-modal-exit-btn {
-          position: absolute;
-          top: 12px; right: 12px;
-          background: rgba(0, 0, 0, 0.6);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: #fff;
-          width: 36px; height: 36px;
-          border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          cursor: pointer;
-          transition: background var(--transition), transform var(--transition);
-          z-index: 10;
-        }
-        .video-modal-exit-btn:hover {
-          background: var(--accent-purple);
-          transform: rotate(90deg);
-        }
-        .video-modal-screen {
-          width: 100%;
-          aspect-ratio: 16/9;
-          background: #000;
-        }
-        .video-modal-screen video {
-          width: 100%; height: 100%;
-          display: block;
-        }
-        .video-modal-meta {
-          padding: 1.25rem 1.6rem;
-          border-top: 1px solid var(--border);
-        }
-        .video-modal-meta h3 {
-          font-family: var(--font-heading);
-          font-size: 1.2rem;
-          color: var(--text-primary);
-          margin-bottom: 0.4rem;
-        }
-        .video-modal-meta p {
-          font-size: 0.88rem;
-          color: var(--text-secondary);
-          line-height: 1.6;
-        }
       `}</style>
 
       <section id="projects">
@@ -971,7 +864,7 @@ function Projects() {
           {heroProjects.length > 0 && (
             <div className="hero-projects-container reveal">
               {heroProjects.map((p) => (
-                <HeroProjectCard key={p.id} project={p} onWatchVideo={setVideoSrc} />
+                <HeroProjectCard key={p.id} project={p} />
               ))}
             </div>
           )}
@@ -980,7 +873,7 @@ function Projects() {
           {visibleRegular.length > 0 ? (
             <div className="projects-regular-grid reveal">
               {visibleRegular.map((p) => (
-                <GridProjectCard key={p.id} project={p} onWatchVideo={setVideoSrc} />
+                <GridProjectCard key={p.id} project={p} />
               ))}
             </div>
           ) : (
@@ -1014,23 +907,6 @@ function Projects() {
           </div>
         </div>
       </section>
-
-      {videoSrc && (
-        <div className="video-modal-backdrop" onClick={() => setVideoSrc(null)}>
-          <div className="video-modal-body" onClick={(e) => e.stopPropagation()}>
-            <button className="video-modal-exit-btn" onClick={() => setVideoSrc(null)} aria-label="Close demo video">
-              <FiX size={18} />
-            </button>
-            <div className="video-modal-screen">
-              <video src={videoSrc} controls autoPlay />
-            </div>
-            <div className="video-modal-meta">
-              <h3>Autonomous Job Search Agent (LangGraph) – Live Demo</h3>
-              <p>Watch the multi-stage LangGraph execution graph scan active boards, compute vector cosine similarity against profile memory, draft custom cover letters, and send Slack notifications in real-time.</p>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }
