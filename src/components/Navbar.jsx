@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
+import ThemeToggle from './ThemeToggle';
 
 const NAV_LINKS = [
   { id: 'hero',     label: 'Home',     href: '/#hero' },
@@ -10,7 +11,7 @@ const NAV_LINKS = [
   { id: 'contact',  label: 'Contact',  href: '/#contact' },
 ];
 
-function Navbar({ activeSection, themeToggleSlot }) {
+function Navbar({ activeSection }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
   const location = useLocation();
@@ -109,7 +110,7 @@ function Navbar({ activeSection, themeToggleSlot }) {
         .nav-actions {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
+          gap: 0.6rem;
         }
         .nav-links {
           display: flex;
@@ -159,8 +160,8 @@ function Navbar({ activeSection, themeToggleSlot }) {
           color: var(--text-secondary) !important;
         }
         .nav-hire-btn {
-          margin-left: 0.5rem;
-          padding: 8px 20px !important;
+          margin-left: 0.4rem;
+          padding: 8px 18px !important;
           background: var(--gradient-accent) !important;
           color: #fff !important;
           border-radius: var(--radius-full) !important;
@@ -333,7 +334,7 @@ function Navbar({ activeSection, themeToggleSlot }) {
               </li>
             </ul>
 
-            {themeToggleSlot}
+            <ThemeToggle />
 
             <button
               className="nav-hamburger"
@@ -389,6 +390,7 @@ function Navbar({ activeSection, themeToggleSlot }) {
         >Resume (PDF)</a>
 
         <div className="mobile-drawer-footer">
+          <ThemeToggle showLabel={true} />
           <a
             href="https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share"
             target="_blank"

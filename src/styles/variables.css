@@ -1,50 +1,113 @@
-/* =========================================
-   CSS Design System — Premium Dark Purple/Cyan
-   ========================================= */
-:root {
-  /* Backgrounds */
-  --bg-primary:    #0a0a0f;
-  --bg-secondary:  #0f0f1a;
-  --bg-card:       rgba(255, 255, 255, 0.03);
-  --bg-card-hover: rgba(255, 255, 255, 0.06);
-  --bg-glass:      rgba(15, 15, 26, 0.7);
+/* ===================================================
+   CSS Design System — Premium Dual Theme (Dark / Light)
+   WCAG AA Contrast Compliant
+   =================================================== */
 
-  /* Accent — Purple → Cyan */
-  --accent-purple:  #7c3aed;
+/* ── Dark Theme (Default) ── */
+:root,
+[data-theme="dark"] {
+  /* Surfaces & Canvas */
+  --bg-primary:    #0a0a12;
+  --bg-secondary:  #111122;
+  --bg-card:       rgba(255, 255, 255, 0.035);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+  --bg-glass:      rgba(17, 17, 34, 0.75);
+  --nav-bg:        rgba(10, 10, 18, 0.88);
+
+  /* Typography Colors */
+  --text-primary:   #f1f5f9; /* Contrast > 14:1 */
+  --text-secondary: #94a3b8; /* Contrast > 5.5:1 */
+  --text-muted:     #64748b;
+
+  /* Accent & Glows */
+  --accent-purple:  #8b5cf6;
   --accent-cyan:    #06b6d4;
   --accent:         #06b6d4;
   --accent-dark:    #0891b2;
-  --accent-glow:    rgba(124, 58, 237, 0.22);
-  --accent-glow2:   rgba(124, 58, 237, 0.08);
-  --cyan-glow:      rgba(6, 182, 212, 0.18);
+  --accent-glow:    rgba(139, 92, 246, 0.25);
+  --accent-glow2:   rgba(139, 92, 246, 0.09);
+  --cyan-glow:      rgba(6, 182, 212, 0.2);
 
-  /* Text */
-  --text-primary:   #e2e8f0;
-  --text-secondary: #94a3b8;
-  --text-muted:     #475569;
-
-  /* Borders */
-  --border:         rgba(124, 58, 237, 0.15);
-  --border-hover:   rgba(6, 182, 212, 0.45);
+  /* Borders & Dividers */
+  --border:         rgba(139, 92, 246, 0.18);
+  --border-hover:   rgba(6, 182, 212, 0.55);
 
   /* Gradients */
-  --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
-  --gradient-accent-r: linear-gradient(135deg, #06b6d4 0%, #7c3aed 100%);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.18) 0%, transparent 70%);
-  --gradient-text: linear-gradient(135deg, #a78bfa 0%, #06b6d4 100%);
+  --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+  --gradient-accent-r: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,92,246,0.2) 0%, transparent 70%);
+  --gradient-text: linear-gradient(135deg, #c4b5fd 0%, #06b6d4 100%);
 
+  /* Tag variables */
+  --tag-bg: rgba(6, 182, 212, 0.08);
+  --tag-border: rgba(6, 182, 212, 0.22);
+  --tag-text: #06b6d4;
+  --btn-outline-bg: rgba(255, 255, 255, 0.02);
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Light Theme ── */
+[data-theme="light"] {
+  /* Surfaces & Canvas */
+  --bg-primary:    #f8fafc; /* Crisp slate-50 */
+  --bg-secondary:  #f1f5f9; /* slate-100 */
+  --bg-card:       #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-glass:      rgba(255, 255, 255, 0.88);
+  --nav-bg:        rgba(248, 250, 252, 0.92);
+
+  /* Typography Colors */
+  --text-primary:   #0f172a; /* Slate 900, Contrast > 16:1 */
+  --text-secondary: #334155; /* Slate 700, Contrast > 8:1 (WCAG AA Compliant) */
+  --text-muted:     #64748b; /* Slate 500, Contrast > 4.6:1 */
+
+  /* Accent & Glows */
+  --accent-purple:  #7c3aed;
+  --accent-cyan:    #0284c7; /* Sky 700 for high-contrast readability */
+  --accent:         #7c3aed;
+  --accent-dark:    #6d28d9;
+  --accent-glow:    rgba(124, 58, 237, 0.18);
+  --accent-glow2:   rgba(124, 58, 237, 0.07);
+  --cyan-glow:      rgba(2, 132, 199, 0.18);
+
+  /* Borders & Dividers */
+  --border:         rgba(124, 58, 237, 0.16);
+  --border-hover:   rgba(2, 132, 199, 0.6);
+
+  /* Gradients */
+  --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #0284c7 100%);
+  --gradient-accent-r: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.12) 0%, transparent 70%);
+  --gradient-text: linear-gradient(135deg, #6d28d9 0%, #0284c7 100%);
+
+  /* Tag variables */
+  --tag-bg: rgba(2, 132, 199, 0.08);
+  --tag-border: rgba(2, 132, 199, 0.25);
+  --tag-text: #0369a1;
+  --btn-outline-bg: #ffffff;
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 12px 36px rgba(124, 58, 237, 0.12);
+}
+
+/* ── Global Design Tokens ── */
+:root {
   /* Fonts */
-  --font-body:    'Inter', sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: 'Space Grotesk', 'Inter', sans-serif;
 
-  /* Radius */
+  /* Radii */
   --radius-sm:   8px;
   --radius-md:   14px;
-  --radius-lg:   22px;
-  --radius-xl:   32px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
   --radius-full: 999px;
 
   /* Transitions */
-  --transition:      0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition:      0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
