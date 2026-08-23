@@ -9,8 +9,8 @@ const STATS = [
 ];
 
 const BADGES = [
-  'React.js', 'Node.js', 'AutoGen', 'LangGraph', 'CrewAI',
-  'n8n Automation', 'Python / FastAPI', 'Flutter & Dart', 'PostgreSQL', 'Docker'
+  'AutoGen', 'LangGraph', 'CrewAI', 'n8n Automation',
+  'React.js', 'Node.js', 'Python / FastAPI', 'Flutter & Dart', 'PostgreSQL', 'Docker'
 ];
 
 function About() {
@@ -23,12 +23,11 @@ function About() {
 
         .about-grid {
           display: grid;
-          grid-template-columns: 1fr 1.15fr;
+          grid-template-columns: 1fr 1.2fr;
           gap: 3.5rem;
           align-items: center;
-          max-width: 1100px;
+          max-width: 1120px;
           margin: 0 auto;
-          padding: 0 1.25rem;
         }
 
         @media (max-width: 920px) {
@@ -53,34 +52,34 @@ function About() {
         /* Avatar */
         .about-avatar-wrap {
           position: relative;
-          width: min(270px, 68vw);
-          height: min(270px, 68vw);
+          width: min(280px, 70vw);
+          height: min(280px, 70vw);
           margin: 0 auto;
         }
         .about-avatar-ring {
           position: absolute;
-          inset: -10px;
+          inset: -12px;
           border-radius: 50%;
           border: 2px dashed var(--accent-purple);
-          opacity: 0.5;
+          opacity: 0.6;
           animation: rotateRing 20s linear infinite;
         }
         .about-avatar-ring::before {
           content: '';
           position: absolute;
-          top: -5px; left: 50%;
+          top: -6px; left: 50%;
           width: 12px; height: 12px;
           background: var(--gradient-accent);
           border-radius: 50%;
           transform: translateX(-50%);
-          box-shadow: 0 0 16px var(--accent);
+          box-shadow: 0 0 16px var(--accent-cyan);
         }
         .about-avatar-ring-2 {
           position: absolute;
-          inset: -20px;
+          inset: -22px;
           border-radius: 50%;
           border: 1px solid var(--accent-glow);
-          animation: rotateRing 30s linear infinite reverse;
+          animation: rotateRing 32s linear infinite reverse;
         }
         .about-avatar-img-wrap {
           width: 100%;
@@ -95,7 +94,8 @@ function About() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center;
+          object-position: center top;
+          transform: scale(1.05);
         }
 
         /* Stats */
@@ -105,21 +105,21 @@ function About() {
           gap: 0.75rem;
           margin-top: 2rem;
           width: 100%;
-          max-width: 360px;
+          max-width: 380px;
         }
         .stat-card {
           background: var(--bg-card);
           border: 1px solid var(--border);
           border-radius: var(--radius-md);
-          padding: 0.9rem 0.6rem;
+          padding: 0.95rem 0.6rem;
           text-align: center;
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
         }
         .stat-card:hover {
-          border-color: var(--accent);
-          box-shadow: 0 6px 20px var(--accent-glow);
+          border-color: var(--accent-cyan);
+          box-shadow: 0 6px 20px var(--cyan-glow);
           transform: translateY(-3px);
         }
         .stat-icon {
@@ -129,7 +129,7 @@ function About() {
         }
         .stat-value {
           font-family: var(--font-heading);
-          font-size: 1.4rem;
+          font-size: 1.45rem;
           font-weight: 800;
           background: var(--gradient-text);
           -webkit-background-clip: text;
@@ -141,12 +141,12 @@ function About() {
           font-size: 0.72rem;
           color: var(--text-muted);
           letter-spacing: 0.3px;
-          margin-top: 2px;
+          margin-top: 3px;
         }
 
         /* Text side */
         .about-text h3 {
-          font-size: clamp(1.4rem, 3vw, 1.85rem);
+          font-size: clamp(1.45rem, 3.2vw, 1.95rem);
           margin-bottom: 1.15rem;
           font-weight: 700;
           line-height: 1.25;
@@ -170,15 +170,15 @@ function About() {
         .about-highlights {
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
-          margin: 1.25rem 0;
+          gap: 0.55rem;
+          margin: 1.35rem 0;
           text-align: left;
         }
         .about-highlight-item {
           display: flex;
           align-items: center;
-          gap: 8px;
-          font-size: 0.9rem;
+          gap: 9px;
+          font-size: 0.92rem;
           color: var(--text-primary);
         }
         .about-highlight-item svg {
@@ -190,7 +190,7 @@ function About() {
           display: flex;
           flex-wrap: wrap;
           gap: 0.45rem;
-          margin-top: 1.25rem;
+          margin-top: 1.35rem;
         }
         .about-badge {
           background: var(--bg-card);
@@ -236,9 +236,9 @@ function About() {
         <div className="container">
           <div className="reveal">
             <SectionTitle
-              overline="Executive Summary"
+              overline="Engineering Background"
               title="About <span class='accent-word'>Me</span>"
-              subtitle="Full-stack engineer and AI automation specialist turning complex logic into polished, production-ready software."
+              subtitle="Specializing in multi-agent orchestration, autonomous business pipelines, and scalable full-stack web platforms."
             />
           </div>
 
@@ -250,8 +250,8 @@ function About() {
                 <div className="about-avatar-ring" />
                 <div className="about-avatar-img-wrap">
                   <img
-                    src="/images/profile_photo.png"
-                    alt="Muhammad Noman Ashraf - Full Stack Developer & AI Automation Specialist"
+                    src="/doc/profile image.jpg"
+                    alt="Muhammad Noman Ashraf - Automation & Agentic AI Engineer"
                     loading="lazy"
                     decoding="async"
                   />
@@ -272,26 +272,29 @@ function About() {
             {/* Text side */}
             <div className="about-text reveal-right">
               <h3>
-                Engineering Intelligent Systems &amp; <span>Scalable Frontends</span>
+                Pioneering Autonomous Swarms &amp; <span>Scalable Architecture</span>
               </h3>
 
               <p>
-                I am a <strong>Full Stack React &amp; Node.js Developer</strong> with a deep focus on <strong>Agentic AI Automation</strong>. I engineer high-performance web and mobile platforms with clean architecture, fluid responsiveness, and state-of-the-art AI capabilities.
+                I am a <strong>Software Engineer &amp; AI Automation Architect</strong> with deep specialization in autonomous multi-agent systems, LangGraph graphs, and high-performance React frontends.
               </p>
 
               <p>
-                As an <strong>AI Automation Engineer</strong>, I build autonomous multi-agent pipelines with <strong>AutoGen, LangGraph, and CrewAI</strong>, alongside complex enterprise integrations via <strong>n8n</strong> and custom Python backends.
+                My expertise spans <strong>AutoGen, LangGraph, CrewAI, and n8n</strong> — building self-directed agent swarms that scrape data, synthesize insights, automate ticket triage, and synchronize enterprise CRMs without manual overhead.
               </p>
 
               <div className="about-highlights">
                 <div className="about-highlight-item">
-                  <FiCheckCircle /> <span>Proven freelance delivery across Upwork &amp; Fiverr clients worldwide</span>
+                  <FiCheckCircle /> <span>Multi-Agent Swarms with AutoGen, LangGraph, and CrewAI</span>
                 </div>
                 <div className="about-highlight-item">
-                  <FiCheckCircle /> <span>Specialist in React, Node.js, Python FastAPI, and Agentic AI graphs</span>
+                  <FiCheckCircle /> <span>Enterprise n8n Workflow Automation with Webhooks &amp; Vector DBs</span>
                 </div>
                 <div className="about-highlight-item">
-                  <FiCheckCircle /> <span>Production RAG pipelines with Vector DBs (ChromaDB, Pinecone, OpenAI)</span>
+                  <FiCheckCircle /> <span>Full Stack Web with React.js, Node.js, Python FastAPI &amp; PostgreSQL</span>
+                </div>
+                <div className="about-highlight-item">
+                  <FiCheckCircle /> <span>Top-rated delivery on Upwork &amp; Fiverr with international clients</span>
                 </div>
               </div>
 
@@ -303,12 +306,12 @@ function About() {
 
               <div className="about-cta-row">
                 <a
-                  href="/doc/Noman Ashraf SE-AI.pdf"
+                  href="/doc/Noman Ashraf Automation Engineer.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="btn-accent"
                 >
-                  <FiDownload size={16} /> Download Resume (PDF)
+                  <FiDownload size={16} /> Download Updated CV (PDF)
                 </a>
               </div>
             </div>

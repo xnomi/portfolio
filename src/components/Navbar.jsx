@@ -318,7 +318,7 @@ function Navbar({ activeSection }) {
               </li>
               <li>
                 <a
-                  href="/doc/Noman Ashraf SE-AI.pdf"
+                  href="/doc/Noman Ashraf Automation Engineer.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="nav-blog-link"
@@ -383,7 +383,7 @@ function Navbar({ activeSection }) {
         ))}
         <Link to="/blog" onClick={() => setOpen(false)}>Blog</Link>
         <a
-          href="/doc/Noman Ashraf SE-AI.pdf"
+          href="/doc/Noman Ashraf Automation Engineer.pdf"
           target="_blank"
           rel="noreferrer"
           onClick={() => setOpen(false)}
