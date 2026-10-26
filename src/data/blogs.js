@@ -14,7 +14,7 @@ export const BLOGS = [
       'For years, AI meant a single prompt and a single response. Multi-agent systems powered by AutoGen are rewriting those rules — and the possibilities are staggering.',
     tags: ['AutoGen', 'AI Agents', 'Python', 'LLM', 'Multi-Agent'],
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=630&fit=crop&q=80',
-    authorImage: '/images/profile_photo.png',
+    authorImage: '/images/profile-image.jpg',
     body: `
       <h2>What Are AI Agents?</h2>
       <p>For years, interacting with AI meant sending a single prompt and receiving a single response. That paradigm is disappearing rapidly. <strong>AI agents</strong> are software systems that can perceive their environment, make decisions, and take actions — often working in concert with other agents to complete complex, multi-step tasks that no single prompt could reliably handle.</p>
@@ -51,7 +51,7 @@ export const BLOGS = [
       'Both frameworks promise to simplify LLM development, but they solve fundamentally different problems. Here is how to choose the right tool for your workflow.',
     tags: ['LangGraph', 'LangChain', 'Python', 'AI', 'Workflows'],
     image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=630&fit=crop&q=80',
-    authorImage: '/images/profile_photo.png',
+    authorImage: '/images/profile-image.jpg',
     body: `
       <h2>The Rise of Framework Choices</h2>
       <p>As the AI ecosystem has matured, developers have been flooded with frameworks promising to simplify LLM application development. Two names dominate conversations today: <strong>LangChain</strong> and its more sophisticated sibling, <strong>LangGraph</strong>. Understanding the difference is critical for building robust, production-ready AI workflows.</p>
@@ -90,7 +90,7 @@ export const BLOGS = [
       'CrewAI brings multi-agent orchestration within reach of every Python developer. Here is a practical guide to building your first intelligent crew from scratch.',
     tags: ['CrewAI', 'Multi-Agent', 'Python', 'AI', 'Tutorial'],
     image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1200&h=630&fit=crop&q=80',
-    authorImage: '/images/profile_photo.png',
+    authorImage: '/images/profile-image.jpg',
     body: `
       <h2>What is CrewAI?</h2>
       <p><strong>CrewAI</strong> is an open-source Python framework for orchestrating autonomous AI agents that work together as a "crew" to accomplish complex tasks. Unlike many alternatives, CrewAI focuses on role-based agent design — each agent has a defined backstory, goal, and set of tools — making the system more predictable, debuggable, and surprisingly close to how real human teams are structured.</p>
@@ -134,7 +134,7 @@ export const BLOGS = [
       'The automation wave has moved from theoretical to observable. Here is a grounded look at which roles AI will reshape by 2027 — and where the real opportunity lies.',
     tags: ['AI Automation', 'Future of Work', 'Productivity', 'Career'],
     image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=630&fit=crop&q=80',
-    authorImage: '/images/profile_photo.png',
+    authorImage: '/images/profile-image.jpg',
     body: `
       <h2>The Automation Wave Is Already Here</h2>
       <p>The conversation about AI replacing jobs has shifted from theoretical to observational. In 2024, companies quietly began replacing entry-level data entry, content moderation, and basic customer service roles with LLM-powered automation systems. By 2027, this trend will accelerate — but the story is more nuanced than "AI takes all the jobs."</p>
@@ -171,7 +171,7 @@ export const BLOGS = [
       'LLMs have a knowledge cutoff problem. RAG is the elegant architectural solution — and understanding it is now essential for any developer building real-world AI applications.',
     tags: ['RAG', 'Vector DB', 'LLM', 'Python', 'AI'],
     image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&h=630&fit=crop&q=80',
-    authorImage: '/images/profile_photo.png',
+    authorImage: '/images/profile-image.jpg',
     body: `
       <h2>The Problem with Pure LLMs</h2>
       <p>Large language models are trained on static datasets with a hard knowledge cutoff date. Ask GPT-4 about your company's internal policy documents, or a news story from last week, and you'll get either a confidently hallucinated answer or an honest admission of ignorance. <strong>Retrieval-Augmented Generation (RAG)</strong> was designed specifically to solve this problem, and it's now the standard architecture for AI applications that need to reason over dynamic or private data.</p>
@@ -206,7 +206,7 @@ export const BLOGS = [
       'Three years ago it sounded like a buzzword. Today, prompt engineering is a core developer skill that directly determines AI output quality — and the gap between those who know it and those who do not is growing fast.',
     tags: ['Prompt Engineering', 'ChatGPT', 'LLM', 'AI', 'Developer'],
     image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=630&fit=crop&q=80',
-    authorImage: '/images/profile_photo.png',
+    authorImage: '/images/profile-image.jpg',
     body: `
       <h2>The New Core Competency</h2>
       <p>Three years ago, "prompt engineering" sounded like a made-up discipline. Today, it's one of the most in-demand skill sets across every industry that uses AI. Whether you're a developer building LLM-powered applications, a marketer generating content at scale, or a data analyst processing unstructured reports, your ability to craft effective prompts directly determines the quality of everything AI produces for you.</p>

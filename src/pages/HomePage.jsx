@@ -196,7 +196,7 @@ export default function HomePage() {
                 <FiArrowUpRight />
               </div>
               <img
-                src="/images/profile_photo.png"
+                src="/images/profile-image.jpg"
                 alt="Muhammad Noman Ashraf, full stack developer and AI automation engineer"
                 width="600"
                 height="700"

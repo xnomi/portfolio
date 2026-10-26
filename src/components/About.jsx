@@ -250,7 +250,7 @@ function About() {
                 <div className="about-avatar-ring" />
                 <div className="about-avatar-img-wrap">
                   <img
-                    src="/doc/profile image.jpg"
+                    src="/images/profile-image.jpg"
                     alt="Muhammad Noman Ashraf - Automation & Agentic AI Engineer"
                     loading="lazy"
                     decoding="async"

@@ -13,13 +13,13 @@ export function pageSeo(pathname) {
       ? "Notes on AI agents, LangGraph, CrewAI, and software development by Muhammad Noman Ashraf."
       : "Hire Muhammad Noman Ashraf for React and Node.js development, AI agents, n8n workflow automation, and Flutter apps. Explore projects and download his résumé.";
   const url = SITE + pathname;
-  const image = post?.image || `${SITE}/images/profile_photo.png`;
+  const image = post?.image || `${SITE}/images/profile-image.jpg`;
   const person = {
     "@type": "Person",
     "@id": `${SITE}/#person`,
     name: "Muhammad Noman Ashraf",
     url: SITE,
-    image: `${SITE}/images/profile_photo.png`,
+    image: `${SITE}/images/profile-image.jpg`,
     jobTitle: "Full Stack Developer & AI Automation Engineer",
     email: "mailto:nomi.devx@gmail.com",
     telephone: "+923319025470",
