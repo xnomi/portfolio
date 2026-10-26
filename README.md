@@ -1,16 +1,34 @@
-# React + Vite
+# Noman Ashraf — portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite portfolio with responsive project browsing, services, résumé downloads, a development journal, and an AI assistant.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm ci
+npm run dev
+```
 
-## React Compiler
+## Production and verification
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```sh
+npm run lint
+npm run build
+npx playwright install chromium
+npm run test:ui
+```
 
-## Expanding the ESLint configuration
+The build pre-renders the home page, journal index, and every article into `dist`. Each page includes its content, unique metadata, canonical URL, and JSON-LD before JavaScript runs. The sitemap is generated from the same article data. Tests start the preview server automatically and cover six viewport widths (320–1440px), navigation, filtering, theme switching, résumé access, and SEO.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Content
+
+- `src/pages/HomePage.jsx`: introduction, services, about, and contact links.
+- `src/data/projects.jsx`: project descriptions, screenshots, categories, and links.
+- `src/data/blogs.js`: journal articles.
+- `src/data/seo.js`: public domain, social profiles, page metadata, and structured data.
+- `src/styles/portfolio.css`: responsive portfolio design and motion.
+- `public/doc/`: downloadable résumé.
+
+The public domain is `https://nomidev.app`. Change `SITE` in `src/data/seo.js` if the domain changes. Contact buttons open the visitor’s email or phone app. The AI assistant still uses the existing `/api/chat` endpoint and requires the server environment configured for that integration. Do not commit environment secrets.
+
+Deploy the `dist` output with the existing Vercel configuration. Confirm the production domain in Search Console and request indexing after deployment; ranking and indexing are controlled by search engines.

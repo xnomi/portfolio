@@ -27,3 +27,8 @@ dist-ssr
 
 # Large Assets
 /public/videos/job-search-agent.mp4
+
+# Local verification artifacts
+artifacts/
+test-results/
+playwright-report/

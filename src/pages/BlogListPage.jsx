@@ -35,10 +35,6 @@ function BlogCard({ post, index }) {
 
 function BlogListPage() {
   useEffect(() => {
-    document.title = 'Blog | Muhammad Noman Ashraf';
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', 'Insights on AI automation, multi-agent systems, LangGraph, CrewAI, and the future of software development by Muhammad Noman Ashraf.');
-
     const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const obs = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),

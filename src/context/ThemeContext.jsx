@@ -6,7 +6,7 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     // 1. Check localStorage
-    const savedTheme = localStorage.getItem('portfolio-theme');
+    const savedTheme = typeof window !== 'undefined' ? localStorage.getItem('portfolio-theme') : null;
     if (savedTheme === 'dark' || savedTheme === 'light') {
       return savedTheme;
     }

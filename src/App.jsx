@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import BlogListPage from './pages/BlogListPage';
 import BlogPostPage from './pages/BlogPostPage';
 import Chatbot from './components/Chatbot';
+import Seo from './components/Seo';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -15,7 +16,7 @@ function ScrollToTop() {
 function App() {
   return (
     <ThemeProvider>
-      <ScrollToTop />
+      <ScrollToTop /><Seo />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blog" element={<BlogListPage />} />

@@ -11,17 +11,6 @@ function BlogPostPage() {
 
   useEffect(() => {
     if (!post) return;
-    document.title = `${post.title} | Muhammad Noman Ashraf`;
-
-    const setMeta = (sel, attr, val) => {
-      let el = document.querySelector(sel);
-      if (el) el.setAttribute(attr, val);
-    };
-    setMeta('meta[name="description"]', 'content', post.excerpt.slice(0, 155));
-    setMeta('meta[property="og:title"]', 'content', `${post.title} | Muhammad Noman Ashraf`);
-    setMeta('meta[property="og:description"]', 'content', post.excerpt.slice(0, 155));
-    setMeta('meta[property="og:image"]', 'content', post.image);
-
     const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const obs = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
