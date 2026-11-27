@@ -1,5 +1,153 @@
 import { FiGithub } from "react-icons/fi";
 import { SiFiverr, SiUpwork } from "react-icons/si";
+
+export const LIVE_PROJECTS = [
+  {
+    id: "bluenov",
+    title: "BlueNov — Webnovel Platform",
+    categoryBadge: "Live Web Platform",
+    url: "https://www.bluenov.me/",
+    displayUrl: "www.bluenov.me",
+    image: "/images/live/blue%20nov.jpg",
+    canEmbed: false,
+    ctaLabel: "Visit BlueNov",
+    description:
+      "Full-stack webnovel and serialized fiction platform with daily updates and custom reader UI.",
+    tags: ["React", "Node.js", "SEO / SSR"],
+  },
+  {
+    id: "ehrsystem",
+    title: "MediSynx EHR & A2A Voice Assistant",
+    categoryBadge: "AI Healthcare SaaS",
+    url: "https://ehrsystem-rho.vercel.app/",
+    displayUrl: "ehrsystem-rho.vercel.app",
+    image: "/images/live/medisynx.jpg",
+    canEmbed: true,
+    ctaLabel: "Open Live App",
+    description:
+      "Electronic Health Records platform featuring an A2A Voice Assistant, instant guest booking, and HD Telehealth.",
+    tags: ["A2A Voice AI", "Healthcare", "Telehealth"],
+  },
+  {
+    id: "curecafe",
+    title: "Cure Cafe — Brickell Café",
+    categoryBadge: "Restaurant & Ordering",
+    url: "https://cure-cafe.vercel.app/",
+    displayUrl: "cure-cafe.vercel.app",
+    image: "/images/live/curecafe.jpg",
+    canEmbed: true,
+    ctaLabel: "Open Live Site",
+    description:
+      "Storefront for Miami's 100% gluten-free & soy-free superfood café with DoorDash & Uber Eats.",
+    tags: ["Food & Beverage", "Conversion UI", "Vercel"],
+  },
+  {
+    id: "tamtam",
+    title: "Tâm Tâm Miami — Restaurant",
+    categoryBadge: "Hospitality Web",
+    url: "https://tam-tam-ten.vercel.app/",
+    displayUrl: "tam-tam-ten.vercel.app",
+    image: "/images/live/TAM%20TAM.jpg",
+    canEmbed: true,
+    ctaLabel: "Open Live Site",
+    description:
+      "Editorial web experience for a Michelin Bib Gourmand recognized Vietnamese restaurant in Miami.",
+    tags: ["Hospitality", "Editorial UI", "Responsive"],
+  },
+  {
+    id: "perfectshine305",
+    title: "Perfect Shine 305 — Auto Detail",
+    categoryBadge: "Local Service Web App",
+    url: "https://perfect-shine305-mobile-auto-detail.vercel.app/",
+    displayUrl: "perfect-shine305...vercel.app",
+    image: "/images/live/miaimiai%20premuim%20mobile.jpg",
+    canEmbed: true,
+    ctaLabel: "Open Live Site",
+    description:
+      "High-converting service website for Miami's 5-star mobile car detailing business with instant booking.",
+    tags: ["Service Business", "Booking UI", "Vercel"],
+  },
+  {
+    id: "toolflow",
+    title: "ToolFlow — Image & PDF Suite",
+    categoryBadge: "Privacy-First Web Suite",
+    url: "https://toolflow.tech/",
+    displayUrl: "toolflow.tech",
+    image: "/images/live/toolflow.jpg",
+    canEmbed: false,
+    ctaLabel: "Visit ToolFlow",
+    description:
+      "Client-side image compression, WebP conversion, and PDF merge/compress tools with zero uploads.",
+    tags: ["Client-Side", "PDF & Image", "Zero Upload"],
+  },
+  {
+    id: "humanifyai",
+    title: "Humanify AI — Portrait Engine",
+    categoryBadge: "AI Web Application",
+    url: "https://humanifyai-psi.vercel.app/",
+    displayUrl: "humanifyai-psi.vercel.app",
+    image: "/images/live/humanify_ai.png",
+    canEmbed: true,
+    ctaLabel: "Open Live App",
+    description:
+      "Restores realistic skin pores, analog film warmth, and human micro-details to AI renders.",
+    tags: ["AI Imaging", "React", "SaaS UI"],
+  },
+  {
+    id: "gridsnap",
+    title: "GridSnap — Time Card Tracker",
+    categoryBadge: "Productivity Web App",
+    url: "https://gridsnap.studio/",
+    displayUrl: "gridsnap.studio",
+    image: "/images/live/gridsnap.png",
+    canEmbed: true,
+    ctaLabel: "Open Live App",
+    description:
+      "Weekly/biweekly work hours, lunch break, overtime, and gross pay calculator with PDF/CSV export.",
+    tags: ["Productivity", "PDF / CSV", "React"],
+  },
+  {
+    id: "geosilent",
+    title: "Geo Silent: Auto Mute & DND",
+    categoryBadge: "Google Play · Android",
+    url: "https://play.google.com/store/apps/details?id=com.nomidevx.geosilent",
+    displayUrl: "play.google.com/.../geosilent",
+    image: "/images/live/geo.webp",
+    canEmbed: false,
+    ctaLabel: "View on Google Play",
+    description:
+      "Automated silent & Do Not Disturb mode triggered by GPS location zones and custom schedules.",
+    tags: ["Android", "Geofencing", "Google Play"],
+  },
+  {
+    id: "scanvault",
+    title: "ScanVault: QR & Barcode",
+    categoryBadge: "Google Play · Android",
+    url: "https://play.google.com/store/apps/details?id=com.nomidevx.scanvault",
+    displayUrl: "play.google.com/.../scanvault",
+    image: "/images/live/sacanvault.jpg",
+    canEmbed: false,
+    ctaLabel: "View on Google Play",
+    description:
+      "Privacy-first QR & barcode scanner with smart actions, scan history vault, and QR generator.",
+    tags: ["Android", "QR / Barcode", "Google Play"],
+  },
+  {
+    id: "daro",
+    title: "Daro: Voice Diary with Lock",
+    categoryBadge: "Google Play · Android",
+    url: "https://play.google.com/store/apps/details?id=com.daro",
+    displayUrl: "play.google.com/.../com.daro",
+    image: "/images/live/daro_rebg_logo_only.png",
+    imageFit: "contain",
+    canEmbed: false,
+    ctaLabel: "View on Google Play",
+    description:
+      "Private voice diary & audio journal with biometric lock, mood tracking, and encrypted sync.",
+    tags: ["Android", "Biometric Lock", "Google Play"],
+  },
+];
+
 export const PROJECTS = [
   {
     id: "langgraph-job-agent",

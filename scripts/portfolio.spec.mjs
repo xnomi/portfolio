@@ -32,6 +32,8 @@ for (const width of [320, 375, 390, 768, 1024, 1440]) {
       .getByRole("link", { name: "Services", exact: true })
       .click();
     await expect(page).toHaveURL(/#services$/);
+    await page.getByRole("link", { name: /Explore all projects/ }).click();
+    await expect(page).toHaveURL(/\/work$/);
     const filter = page.getByRole("button", { name: /^Mobile apps/ });
     await filter.click();
     await expect(filter).toHaveAttribute("aria-pressed", "true");
@@ -39,10 +41,8 @@ for (const width of [320, 375, 390, 768, 1024, 1440]) {
       Array(await page.locator(".p-project").count()).fill("Mobile App"),
     );
     await page.getByRole("button", { name: /^All work/ }).click();
-    await page.getByRole("button", { name: "Explore all projects" }).click();
     expect(await page.locator(".p-project").count()).toBeGreaterThan(4);
-    await page.getByRole("button", { name: "Show selected work" }).click();
-    await expect(page.locator(".p-project")).toHaveCount(4);
+    await page.goto(base);
     await page.getByRole("button", { name: /Switch to .* theme/ }).click();
     expect(
       await page.evaluate(
@@ -52,11 +52,8 @@ for (const width of [320, 375, 390, 768, 1024, 1440]) {
     await expect(
       page.locator('a[href="mailto:nomi.devx@gmail.com"]').first(),
     ).toBeAttached();
-    const resume = await page.request.get(
-      `${base}/doc/Noman%20Ashraf%20Automation%20Engineer.pdf`,
-    );
-    expect(resume.ok()).toBeTruthy();
-    expect(resume.headers()["content-type"]).toContain("pdf");
+    await expect(page.locator('a[download], a[href*=".pdf"]')).toHaveCount(0);
+    await expect(page.locator("#services .p-service")).toHaveCount(4);
     expect(errors).toEqual([]);
     if ([390, 1440].includes(width)) {
       await page.evaluate(() => {

@@ -4,14 +4,18 @@ export function pageSeo(pathname) {
   const post = BLOGS.find((p) => pathname === `/blog/${p.slug}`);
   const title = post
     ? `${post.title} | Noman Ashraf`
-    : pathname === "/blog"
-      ? "AI & Development Journal | Noman Ashraf"
-      : "Noman Ashraf | Full Stack Developer & AI Automation Engineer";
+    : pathname === "/work" || pathname === "/projects"
+      ? "All Work & Case Studies | Noman Ashraf"
+      : pathname === "/blog"
+        ? "AI & Development Journal | Noman Ashraf"
+        : "Noman Ashraf | Full Stack Developer & AI Automation Engineer";
   const description = post
     ? post.excerpt
-    : pathname === "/blog"
-      ? "Notes on AI agents, LangGraph, CrewAI, and software development by Muhammad Noman Ashraf."
-      : "Hire Muhammad Noman Ashraf for React and Node.js development, AI agents, n8n workflow automation, and Flutter apps. Explore projects and download his résumé.";
+    : pathname === "/work" || pathname === "/projects"
+      ? "Explore all live shipped web apps, Google Play Android apps, AI agent systems, and n8n automation workflows built by Muhammad Noman Ashraf."
+      : pathname === "/blog"
+        ? "Notes on AI agents, LangGraph, CrewAI, and software development by Muhammad Noman Ashraf."
+        : "Hire Muhammad Noman Ashraf for custom AI agents, n8n workflow automation, React & Node.js web apps, and Flutter mobile development. Request a project quote.";
   const url = SITE + pathname;
   const image = post?.image || `${SITE}/images/profile-image.jpg`;
   const person = {
@@ -61,7 +65,10 @@ export function pageSeo(pathname) {
             mainEntityOfPage: url,
           }
         : {
-            "@type": pathname === "/blog" ? "CollectionPage" : "ProfilePage",
+            "@type":
+              pathname === "/blog" || pathname === "/work" || pathname === "/projects"
+                ? "CollectionPage"
+                : "ProfilePage",
             url,
             name: title,
             description,

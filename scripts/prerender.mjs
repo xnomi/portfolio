@@ -15,7 +15,7 @@ try {
     "/src/entry-server.jsx",
   );
   const template = await readFile("dist/index.html", "utf8");
-  const routes = ["/", "/blog", ...BLOGS.map((post) => `/blog/${post.slug}`)];
+  const routes = ["/", "/work", "/blog", ...BLOGS.map((post) => `/blog/${post.slug}`)];
   for (const route of routes) {
     const seo = pageSeo(route);
     let html = template.replace(
