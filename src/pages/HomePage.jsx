@@ -162,7 +162,9 @@ export default function HomePage() {
               </a>
             ))}
             <a
-              href="mailto:nomi.devx@gmail.com?subject=Project%20Inquiry"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=nomi.devx@gmail.com&su=Project%20Inquiry"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-nav-cta"
               onClick={() => setMenu(false)}
             >
