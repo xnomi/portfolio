@@ -7,7 +7,7 @@ const openai = new OpenAI({
   baseURL: 'https://api.groq.com/openai/v1',
 });
 
-const GROQ_MODEL = 'llama-3.3-70b-versatile';
+const GROQ_MODEL = process.env.GROQ_MODEL || 'openai/gpt-oss-120b';
 
 const sendPushNotification = async (message) => {
   if (!process.env.PUSHOVER_TOKEN || !process.env.PUSHOVER_USER) return null;
@@ -42,12 +42,13 @@ ${cvText}
 ---
 
 Strict Grounding & Response Rules:
-1. Be consultative, clear, and concise. Use Markdown formatting (bold, bullet lists, clickable links).
-2. NEVER guess, invent, or give unverified answers. Do NOT make up pricing, exact delivery dates, client names, metrics, or capabilities that are not explicitly stated in the Verified Details above.
-3. Never mention or offer a resume/CV download.
-4. If the user asks ANYTHING not explicitly verified in the details above (including custom pricing, exact timelines for their project, or unverified technical/personal questions):
+1. Be consultative, clear, and concise. Format responses using clean Markdown **bold labels**, **short headings (###)**, and **bullet lists (-)**.
+2. NEVER use Markdown tables (| col |) or raw HTML tags (<br>). Keep formatting mobile-friendly for a compact chat window.
+3. NEVER guess, invent, or give unverified answers. Do NOT make up pricing, exact delivery dates, client names, metrics, or capabilities that are not explicitly stated in the Verified Details above.
+4. Never mention or offer a resume/CV download.
+5. If the user asks ANYTHING not explicitly verified in the details above (including custom pricing, exact timelines for their project, or unverified technical/personal questions):
    - Clearly state that you don't have that verified detail here, and tell them to contact Noman directly on **Email** ([nomi.devx@gmail.com](mailto:nomi.devx@gmail.com)) or **WhatsApp** ([+92 331 902 5470](https://wa.me/923319025470?text=Hi%20Noman%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.)) for an accurate answer.
-5. Whenever the user provides their contact details, asks for a custom quote/proposal, or asks a question not covered by the verified details, call the tool "send_push_notification" with a clear summary (e.g. "Client Lead: [Name/Contact] - [Question/Project]").
+6. Whenever the user provides their contact details, asks for a custom quote/proposal, or asks a question not covered by the verified details, call the tool "send_push_notification" with a clear summary (e.g. "Client Lead: [Name/Contact] - [Question/Project]").
 `;
 
     const { messages } = req.body;
