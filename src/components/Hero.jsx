@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  FiGithub, FiMail, FiLinkedin, FiDownload, FiArrowRight,
+  FiGithub, FiMail, FiLinkedin, FiArrowRight,
   FiPlay, FiCheck, FiCpu, FiGitBranch, FiActivity, FiLayers
 } from 'react-icons/fi';
 import { SiUpwork, SiFiverr } from 'react-icons/si';
@@ -514,14 +514,6 @@ function Hero() {
               <button className="btn-accent" onClick={() => scrollTo('projects')}>
                 Explore Agentic Projects <FiArrowRight size={15} />
               </button>
-              <a
-                href="/doc/Noman Ashraf Automation Engineer.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="btn-outline"
-              >
-                <FiDownload size={15} /> Download CV (PDF)
-              </a>
               <a
                 href="https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share"
                 target="_blank"

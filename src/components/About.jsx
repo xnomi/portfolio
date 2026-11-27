@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionTitle from './ui/SectionTitle';
-import { FiCode, FiBriefcase, FiStar, FiDownload, FiCheckCircle } from 'react-icons/fi';
+import { FiCode, FiBriefcase, FiStar, FiCheckCircle, FiArrowRight } from 'react-icons/fi';
 
 const STATS = [
   { icon: <FiCode />, value: '2+', label: 'Years Exp.' },
@@ -306,12 +306,10 @@ function About() {
 
               <div className="about-cta-row">
                 <a
-                  href="/doc/Noman Ashraf Automation Engineer.pdf"
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#contact"
                   className="btn-accent"
                 >
-                  <FiDownload size={16} /> Download Updated CV (PDF)
+                  Start a Project <FiArrowRight size={16} />
                 </a>
               </div>
             </div>
