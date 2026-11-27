@@ -5,7 +5,6 @@ import {
   FiArrowRight,
   FiGithub,
   FiLinkedin,
-  FiDownload,
   FiMenu,
   FiX,
   FiCode,
@@ -16,60 +15,94 @@ import {
   FiPhone,
   FiSun,
   FiMoon,
+  FiBriefcase,
+  FiGitBranch,
 } from "react-icons/fi";
+import { FaRobot } from "react-icons/fa";
+import {
+  SiReact,
+  SiNodedotjs,
+  SiPython,
+  SiFlutter,
+  SiPostgresql,
+  SiDocker,
+  SiFastapi,
+} from "react-icons/si";
 import { useTheme } from "../context/ThemeContext";
-import { PROJECTS } from "../data/projects";
+import { LIVE_PROJECTS } from "../data/projects";
 import { BLOGS } from "../data/blogs";
+import LiveProjectsGrid from "../components/LiveProjectsGrid";
+import ReviewsCarousel from "../components/ReviewsCarousel";
 import "../styles/portfolio.css";
 
-const resume = "/doc/Noman%20Ashraf%20Automation%20Engineer.pdf";
-const categories = [
-  ["all", "All work"],
-  ["agentic-ai", "AI agents"],
-  ["automation", "Automation"],
-  ["web", "Web apps"],
-  ["mobile", "Mobile apps"],
+const UPWORK_URL =
+  "https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share";
+const FIVERR_URL = "https://www.fiverr.com/s/DBvdoDa";
+
+const TOOLKIT = [
+  { name: "React", icon: SiReact },
+  { name: "Node.js", icon: SiNodedotjs },
+  { name: "Python", icon: SiPython },
+  { name: "FastAPI", icon: SiFastapi },
+  { name: "LangGraph", icon: FiGitBranch },
+  { name: "CrewAI", icon: FaRobot },
+  { name: "n8n", icon: FiZap },
+  { name: "Flutter", icon: SiFlutter },
+  { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "Docker", icon: SiDocker },
 ];
+
 const services = [
   [
     FiCpu,
     "01",
     "AI agents & intelligent systems",
-    "Turn complex research and decision workflows into connected, purpose-built AI systems.",
+    "Automate research, lead qualification, support triage, and internal decision workflows with custom multi-agent AI.",
     ["LangGraph", "CrewAI", "Python", "RAG"],
   ],
   [
     FiZap,
     "02",
-    "Workflow automation",
-    "Connect your tools, reduce repetitive work, and keep your business moving with custom integrations.",
+    "n8n workflow automation",
+    "Eliminate manual busywork by connecting your CRM, Gmail, Slack, and databases into reliable automated pipelines.",
     ["n8n", "REST APIs", "Webhooks", "OpenAI"],
   ],
   [
     FiCode,
     "03",
-    "Full stack web development",
-    "Responsive interfaces and dependable APIs, built together for a smooth end-to-end experience.",
-    ["React", "Node.js", "Express", "MySQL"],
+    "Full stack web applications",
+    "Launch fast, responsive web platforms, SaaS MVPs, and client portals backed by clean, scalable APIs.",
+    ["React", "Node.js", "Express", "PostgreSQL"],
   ],
   [
     FiSmartphone,
     "04",
-    "Mobile app development",
-    "Thoughtful cross-platform applications that make everyday tasks feel simple.",
+    "Cross-platform mobile apps",
+    "Ship polished iOS and Android apps with smooth UX, real-time sync, and integrated AI features.",
     ["Flutter", "Dart", "Firebase", "Mobile UI"],
+  ],
+];
+const processSteps = [
+  [
+    "01",
+    "Discovery & scope",
+    "We align on your business bottleneck, technical architecture, and fixed milestones.",
+  ],
+  [
+    "02",
+    "Rapid build & demos",
+    "Weekly working increments with transparent updates so you see progress early.",
+  ],
+  [
+    "03",
+    "Launch & handover",
+    "Production deployment, clean documentation, and post-launch support.",
   ],
 ];
 
 export default function HomePage() {
   const [menu, setMenu] = useState(false);
-  const [category, setCategory] = useState("all");
-  const [expanded, setExpanded] = useState(false);
   const { isDark, toggleTheme } = useTheme();
-  const filtered = PROJECTS.filter(
-    (p) => category === "all" || p.category === category,
-  );
-  const visible = expanded ? filtered : filtered.slice(0, 4);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -93,7 +126,7 @@ export default function HomePage() {
       observer.disconnect();
       window.removeEventListener("keydown", escape);
     };
-  }, [category, expanded]);
+  }, []);
 
   return (
     <div className="portfolio">
@@ -119,8 +152,8 @@ export default function HomePage() {
             className={menu ? "p-links is-open" : "p-links"}
           >
             {[
-              ["projects", "Work"],
               ["services", "Services"],
+              ["projects", "Work"],
               ["about", "About"],
               ["journal", "Journal"],
             ].map(([id, label]) => (
@@ -129,11 +162,11 @@ export default function HomePage() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="mailto:nomi.devx@gmail.com?subject=Project%20Inquiry"
               className="p-nav-cta"
               onClick={() => setMenu(false)}
             >
-              Let’s talk <FiArrowUpRight />
+              Book a project <FiArrowUpRight />
             </a>
           </nav>
           <div className="p-nav-tools">
@@ -160,8 +193,8 @@ export default function HomePage() {
         <section id="hero" className="p-hero p-wrap">
           <div className="p-hero-copy">
             <div className="p-eyebrow">
-              <span className="p-status-dot" /> OPEN TO OPPORTUNITIES &
-              COLLABORATIONS
+              <span className="p-status-dot" /> AVAILABLE FOR CLIENT PROJECTS &amp;
+              RETAINERS
             </div>
             <h1>
               Thoughtful code.
@@ -172,21 +205,22 @@ export default function HomePage() {
             </h1>
             <p className="p-hero-intro">
               I’m <strong>Muhammad Noman Ashraf</strong>, a full stack developer
-              and AI automation engineer. I build web experiences, AI agents,
-              and workflows that make work easier.
+              and AI automation architect. I help startups and growing teams
+              ship custom AI agents, n8n workflows, and scalable web apps that
+              save hours and drive growth.
             </p>
             <div className="p-actions">
-              <a className="p-button" href="#projects">
-                Explore my work <FiArrowUpRight />
+              <a className="p-button" href="#contact">
+                Start a project <FiArrowUpRight />
               </a>
-              <a className="p-text-link" href={resume} download>
-                <FiDownload /> Download résumé
+              <a className="p-text-link" href="#services">
+                Explore services <FiArrowRight />
               </a>
             </div>
             <div className="p-hero-note">
-              <span>BASED IN PAKISTAN</span>
+              <span>4K+ LINKEDIN FOLLOWERS</span>
               <span className="p-note-line" />
-              <span>BUILDING FOR THE WORLD</span>
+              <span>24H RESPONSE · WORLDWIDE</span>
             </div>
           </div>
           <div className="p-portrait-area">
@@ -222,18 +256,19 @@ export default function HomePage() {
         <div className="p-stack-strip">
           <div className="p-wrap">
             <span>MY EVERYDAY TOOLKIT</span>
-            <div>
-              {[
-                "React",
-                "Node.js",
-                "Python",
-                "LangGraph",
-                "CrewAI",
-                "n8n",
-                "Flutter",
-              ].map((x) => (
-                <span key={x}>{x}</span>
-              ))}
+            <div className="p-marquee" aria-label="Technology stack">
+              <div className="p-marquee-track">
+                {[...TOOLKIT, ...TOOLKIT].map(({ icon, name }, idx) => (
+                  <span
+                    className="p-tool-pill"
+                    key={`${name}-${idx}`}
+                    aria-hidden={idx >= TOOLKIT.length}
+                  >
+                    {createElement(icon)}
+                    {name}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -252,105 +287,31 @@ export default function HomePage() {
               Explore the approach, tools, and code behind each build.
             </p>
           </div>
-          <div className="p-filters" aria-label="Filter projects">
-            {categories.map(([id, label]) => (
-              <button
-                key={id}
-                aria-pressed={category === id}
-                onClick={() => {
-                  setCategory(id);
-                  setExpanded(false);
-                }}
-              >
-                {label}
-                <span>
-                  {id === "all"
-                    ? PROJECTS.length
-                    : PROJECTS.filter((p) => p.category === id).length}
-                </span>
-              </button>
-            ))}
-          </div>
-          <div className="p-project-grid">
-            {visible.map((p, index) => (
-              <article className="p-project p-reveal" key={p.id}>
-                <div className={`p-project-image tone-${index % 4}`}>
-                  {p.image ? (
-                    <img
-                      src={p.image}
-                      alt={`${p.title} project preview`}
-                      width="800"
-                      height="500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="p-project-placeholder">
-                      <FiCode />
-                      <span>{p.title.split("–")[0]}</span>
-                    </div>
-                  )}
-                  <span className="p-project-number">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <div className="p-project-body">
-                  <span className="p-eyebrow">{p.categoryBadge}</span>
-                  <h3>{p.title}</h3>
-                  <p>{p.description}</p>
-                  <div className="p-tags">
-                    {p.tags.slice(0, 4).map((t) => (
-                      <span key={t}>{t}</span>
-                    ))}
-                  </div>
-                  <div className="p-project-links">
-                    {p.links.map((l) => (
-                      <a
-                        key={l.href + l.label}
-                        href={l.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {l.href.replace(/\/$/, "").toLowerCase() ===
-                        "https://github.com/nomidevx"
-                          ? "Explore GitHub profile"
-                          : l.label}{" "}
-                        <FiArrowUpRight />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+          <LiveProjectsGrid />
           <div className="p-project-bottom">
             <p aria-live="polite">
-              Showing {visible.length} of {filtered.length} projects
+              Showing {LIVE_PROJECTS.length} live shipped products &amp; apps
             </p>
-            {filtered.length > 4 && (
-              <button
-                className="p-button p-button-outline"
-                onClick={() => setExpanded(!expanded)}
-              >
-                {expanded ? "Show selected work" : "Explore all projects"}{" "}
-                <FiArrowRight />
-              </button>
-            )}
+            <Link className="p-button p-button-outline" to="/work">
+              Explore all projects &amp; case studies <FiArrowRight />
+            </Link>
           </div>
         </section>
         <section id="services" className="p-services">
           <div className="p-wrap p-section">
             <div className="p-section-heading p-reveal">
               <div>
-                <span className="p-eyebrow">02 / HOW I CAN HELP</span>
+                <span className="p-eyebrow">02 / CLIENT SERVICES</span>
                 <h2>
-                  Your next idea.
+                  Built for growth.
                   <br />
-                  <span>Let’s build it right.</span>
+                  <span>Engineered to scale.</span>
                 </h2>
               </div>
               <p>
-                From a focused integration to a complete product, I bring the
-                interface, logic, and automation together.
+                From a focused n8n automation to a complete AI-powered product,
+                I deliver production-ready systems tailored to your business
+                goals.
               </p>
             </div>
             <div className="p-service-grid">
@@ -370,33 +331,42 @@ export default function HomePage() {
                   <a
                     href={`mailto:nomi.devx@gmail.com?subject=${encodeURIComponent(`Project inquiry: ${title}`)}`}
                   >
-                    Discuss a project <FiArrowUpRight />
+                    Request a quote <FiArrowUpRight />
                   </a>
                 </article>
+              ))}
+            </div>
+            <div className="p-process-strip p-reveal">
+              {processSteps.map(([step, heading, copy]) => (
+                <div className="p-process-item" key={step}>
+                  <span className="p-eyebrow">STEP {step}</span>
+                  <h3>{heading}</h3>
+                  <p>{copy}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
         <section id="about" className="p-section p-wrap p-about">
           <div className="p-reveal">
-            <span className="p-eyebrow">03 / A LITTLE ABOUT ME</span>
+            <span className="p-eyebrow">03 / WHY WORK WITH ME</span>
             <h2>
-              Curious by nature.
+              Business-first thinking.
               <br />
-              <span>Builder by choice.</span>
+              <span>Clean execution.</span>
             </h2>
             <p>
-              I’m Noman, a developer based in Pakistan, working across full
-              stack development, AI systems, and business automation.
+              I’m Noman, a full stack developer and AI automation architect
+              partnering with founders, agencies, and businesses worldwide.
             </p>
             <p>
-              I enjoy connecting the dots between a good idea and a useful
-              product: shaping the interface, building the API, and automating
-              what happens behind the scenes.
+              I bridge the gap between strategy and shipping: designing clean
+              interfaces, engineering dependable APIs, and automating repetitive
+              operations so your team can scale without adding headcount.
             </p>
             <div className="p-actions">
-              <a className="p-button p-button-outline" href={resume} download>
-                Get my résumé <FiDownload />
+              <a className="p-button" href="#contact">
+                Start a project <FiArrowUpRight />
               </a>
               <a
                 className="p-text-link"
@@ -404,25 +374,33 @@ export default function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Connect on LinkedIn <FiArrowUpRight />
+                4K+ Followers on LinkedIn <FiArrowUpRight />
+              </a>
+              <a
+                className="p-text-link"
+                href={UPWORK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Hire on Upwork <FiArrowUpRight />
               </a>
             </div>
           </div>
           <div className="p-about-panel p-reveal">
-            <span className="p-eyebrow">FOR RECRUITERS & COLLABORATORS</span>
-            <h3>Where I can contribute</h3>
+            <span className="p-eyebrow">FOR FOUNDERS &amp; TEAMS</span>
+            <h3>How I help clients win</h3>
             {[
               [
-                "Full stack engineering",
-                "React interfaces, Node.js services, and API integrations.",
+                "Autonomous AI & RAG systems",
+                "Custom LangGraph, CrewAI, and AutoGen agents for research, triage, and ops.",
               ],
               [
-                "AI & automation",
-                "Agent orchestration, retrieval workflows, and n8n integrations.",
+                "Zero-bottleneck automation",
+                "n8n pipelines connecting your CRM, Gmail, Slack, and databases reliably.",
               ],
               [
-                "Cross-platform development",
-                "Flutter applications with Firebase and connected AI features.",
+                "Production web & mobile apps",
+                "Fast React/Node.js platforms and Flutter apps shipped with clean architecture.",
               ],
             ].map(([a, b]) => (
               <div className="p-capability" key={a}>
@@ -434,10 +412,11 @@ export default function HomePage() {
               </div>
             ))}
             <a href="#contact" className="p-text-link">
-              Have a role in mind? Let’s connect <FiArrowRight />
+              Have a project in mind? Let’s scope it <FiArrowRight />
             </a>
           </div>
         </section>
+        <ReviewsCarousel />
         <section id="journal" className="p-section p-wrap p-journal">
           <div className="p-section-heading p-reveal">
             <div>
@@ -476,39 +455,69 @@ export default function HomePage() {
             <div className="p-contact-top p-reveal">
               <div>
                 <span className="p-eyebrow">
-                  <span className="p-status-dot" /> LET’S MAKE SOMETHING USEFUL
+                  <span className="p-status-dot" /> ACCEPTING NEW CLIENT PROJECTS
                 </span>
                 <h2>
-                  A project, a role,
+                  Ready to automate,
                   <br />
-                  or a <span>new possibility?</span>
+                  build, or <span>launch?</span>
                 </h2>
                 <p>
-                  Tell me what you have in mind. Let’s find out how I can help.
+                  Share your project goals, timeline, or workflow bottleneck.
+                  I’ll reply within 24 hours with a clear technical plan.
                 </p>
-                <a className="p-button" href="mailto:nomi.devx@gmail.com">
-                  Start a conversation <FiArrowUpRight />
+                <a
+                  className="p-button"
+                  href="mailto:nomi.devx@gmail.com?subject=Project%20Inquiry"
+                >
+                  Send project brief <FiArrowUpRight />
                 </a>
               </div>
               <div className="p-contact-details">
                 <a href="mailto:nomi.devx@gmail.com">
                   <FiMail />
                   <span>
-                    <small>DROP ME A LINE</small>nomi.devx@gmail.com
+                    <small>PROJECT INQUIRIES</small>nomi.devx@gmail.com
                   </span>
                   <FiArrowUpRight />
                 </a>
                 <a href="tel:+923319025470">
                   <FiPhone />
                   <span>
-                    <small>LET’S TALK</small>+92 331 902 5470
+                    <small>WHATSAPP / DIRECT CALL</small>+92 331 902 5470
                   </span>
                   <FiArrowUpRight />
                 </a>
-                <a href={resume} download>
-                  <FiDownload />
+                <a
+                  href={UPWORK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FiBriefcase />
                   <span>
-                    <small>HIRING FOR YOUR TEAM?</small>Download my résumé
+                    <small>HIRE VIA UPWORK</small>Book a contract on Upwork
+                  </span>
+                  <FiArrowUpRight />
+                </a>
+                <a
+                  href={FIVERR_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FiZap />
+                  <span>
+                    <small>HIRE VIA FIVERR</small>Order a gig on Fiverr
+                  </span>
+                  <FiArrowUpRight />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/nomidevx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FiLinkedin />
+                  <span>
+                    <small>LINKEDIN · 4K+ FOLLOWERS</small>Connect with Noman Ashraf
                   </span>
                   <FiArrowUpRight />
                 </a>
