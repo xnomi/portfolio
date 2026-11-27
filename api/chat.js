@@ -3,11 +3,14 @@ import axios from 'axios';
 import { cvText } from './cvData.js';
 
 const openai = new OpenAI({
-  apiKey: process.env.DEEPSEEK_API_KEY,
-  baseURL: 'https://api.deepseek.com/v1',
+  apiKey: process.env.GROQ_API_KEY,
+  baseURL: 'https://api.groq.com/openai/v1',
 });
 
+const GROQ_MODEL = 'llama-3.3-70b-versatile';
+
 const sendPushNotification = async (message) => {
+  if (!process.env.PUSHOVER_TOKEN || !process.env.PUSHOVER_USER) return null;
   try {
     const response = await axios.post('https://api.pushover.net/1/messages.json', {
       token: process.env.PUSHOVER_TOKEN,
@@ -18,7 +21,7 @@ const sendPushNotification = async (message) => {
     return response.data;
   } catch (error) {
     console.error('Error sending Pushover notification:', error.message);
-    throw error;
+    return null;
   }
 };
 
@@ -28,22 +31,23 @@ export default async function handler(req, res) {
   }
 
   try {
-    const SYSTEM_PROMPT = `You are Noman Ashraf, a Full Stack Developer, AI Automation Engineer, and React Developer.
-You are chatting directly with visitors on your portfolio website.
-Speak in the first person ("I", "my", "me").
-Use the following context to answer questions about yourself.
+    const SYSTEM_PROMPT = `You are Muhammad Noman Ashraf's AI Solutions Consultant on his portfolio website.
+You are speaking with prospective clients, founders, and businesses looking for development or automation services.
+Speak in the first person ("I", "my", "me") as Noman's assistant representing his practice.
+Use ONLY the verified details below to answer questions:
 
-My Details:
+Verified Details:
 ---
 ${cvText}
 ---
 
-Rules:
-1. Answer questions clearly, professionally, and concisely using the first person perspective. 
-2. Use Markdown formatting (bold, lists, etc.) to make your responses easy to read.
-3. If the user asks a question about you that is NOT in the details provided, politely say you don't have that information handy, and ask the user to provide their contact details (name and email or phone) so you can get back to them personally.
-4. If the user asks a question not covered by the details, OR if the user provides their contact details, you MUST call the tool "send_push_notification".
-5. When calling "send_push_notification", provide a clear message for yourself (the real Noman) like: "A user asked: [Question]." or "A user left contact details: [Details]".
+Strict Grounding & Response Rules:
+1. Be consultative, clear, and concise. Use Markdown formatting (bold, bullet lists, clickable links).
+2. NEVER guess, invent, or give unverified answers. Do NOT make up pricing, exact delivery dates, client names, metrics, or capabilities that are not explicitly stated in the Verified Details above.
+3. Never mention or offer a resume/CV download.
+4. If the user asks ANYTHING not explicitly verified in the details above (including custom pricing, exact timelines for their project, or unverified technical/personal questions):
+   - Clearly state that you don't have that verified detail here, and tell them to contact Noman directly on **Email** ([nomi.devx@gmail.com](mailto:nomi.devx@gmail.com)) or **WhatsApp** ([+92 331 902 5470](https://wa.me/923319025470?text=Hi%20Noman%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.)) for an accurate answer.
+5. Whenever the user provides their contact details, asks for a custom quote/proposal, or asks a question not covered by the verified details, call the tool "send_push_notification" with a clear summary (e.g. "Client Lead: [Name/Contact] - [Question/Project]").
 `;
 
     const { messages } = req.body;
@@ -58,13 +62,13 @@ Rules:
         type: 'function',
         function: {
           name: 'send_push_notification',
-          description: 'Send a push notification to Noman. Use this tool if the user asks a question you cannot answer based on the CV, or if the user provides their contact details.',
+          description: 'Send a push notification to Noman when the user provides contact details, asks for a quote, or asks an unverified question.',
           parameters: {
             type: 'object',
             properties: {
               message: {
                 type: 'string',
-                description: 'The message to send to Noman. Be descriptive (e.g. Include the user contact details or the unanswered question).',
+                description: 'The message to send to Noman including the user contact details or unanswered question.',
               },
             },
             required: ['message'],
@@ -74,7 +78,8 @@ Rules:
     ];
 
     const completion = await openai.chat.completions.create({
-      model: 'deepseek-chat',
+      model: GROQ_MODEL,
+      temperature: 0.2,
       messages: formattedMessages,
       tools: tools,
       tool_choice: 'auto',
@@ -88,8 +93,7 @@ Rules:
         if (toolCall.function.name === 'send_push_notification') {
           const args = JSON.parse(toolCall.function.arguments);
           await sendPushNotification(args.message);
-          
-          // Respond back to user
+
           formattedMessages.push(responseMessage);
           formattedMessages.push({
             tool_call_id: toolCall.id,
@@ -98,9 +102,9 @@ Rules:
             content: 'Notification sent successfully to Noman.',
           });
 
-          // Get the final text response from DeepSeek
           const finalCompletion = await openai.chat.completions.create({
-            model: 'deepseek-chat',
+            model: GROQ_MODEL,
+            temperature: 0.2,
             messages: formattedMessages,
           });
 

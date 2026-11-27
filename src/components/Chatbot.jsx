@@ -4,9 +4,9 @@ import ReactMarkdown from 'react-markdown';
 import './Chatbot.css';
 
 const QUICK_PROMPTS = [
-  '🛠 What are your core technical skills and tech stack?',
-  '🤖 Tell me about your AI Agent projects (LangGraph & CrewAI)',
-  '💼 What kind of freelance or full-time roles are you looking for?',
+  '⚡ What services do you offer for businesses & startups?',
+  '🤖 Can you build custom AI Agents or n8n automations?',
+  '🚀 How do we start a project & what is your timeline?',
 ];
 
 const Chatbot = () => {
@@ -14,7 +14,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: 'Hi! I am **Noman Ashraf\'s AI Assistant**. Ask me anything about my full-stack skills, AI automation agents, projects, or how to get in touch!'
+      content: 'Hi! I am **Noman Ashraf\'s AI Solutions Assistant**. Looking to build a web/mobile app, automate workflows with **n8n**, or deploy **custom AI agents**? Ask me about my services, past builds, or share your project idea!'
     }
   ]);
   const [input, setInput] = useState('');
@@ -74,7 +74,7 @@ const Chatbot = () => {
       console.error('Chat error:', error);
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', content: 'Sorry, I am having trouble connecting to the knowledge base right now. Please feel free to email Noman directly at [nomi.devx@gmail.com](mailto:nomi.devx@gmail.com)!' }
+        { role: 'assistant', content: 'Sorry, I am having trouble connecting right now. Please reach out directly via [Email](mailto:nomi.devx@gmail.com) or [WhatsApp](https://wa.me/923319025470?text=Hi%20Noman%2C%20I%20visited%20your%20portfolio%20and%20have%20a%20question.)!' }
       ]);
     } finally {
       setIsLoading(false);
@@ -153,7 +153,7 @@ const Chatbot = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask anything about Noman..."
+              placeholder="Ask about services, timelines, or your project..."
               disabled={isLoading}
               aria-label="Your question"
             />

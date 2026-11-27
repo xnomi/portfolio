@@ -1,56 +1,68 @@
 export const cvText = `
 
-Muhammad Noman Ashraf 
-Software Engineer & AI Automation Architect
-Nomi.devx@gmail.com                     0331-9025470                                    
-github.com/NomiDevx 
-PROFESSIONAL SUMMARY  
+Muhammad Noman Ashraf
+Full Stack Developer & AI Automation Architect
+Email: nomi.devx@gmail.com | WhatsApp/Phone: +92 331 902 5470
+GitHub: github.com/NomiDevx | LinkedIn: linkedin.com/in/nomidevx
+Upwork: https://www.upwork.com/freelancers/~01f61b582dd79d0ae4?mp_source=share
+Fiverr: https://www.fiverr.com/s/DBvdoDa
 
-Results-driven Software Engineer and Backend Developer specializing in scalable, secure, and fast architectures for high-scale applications. Proficient in cross-platform mobile development with Flutter expertise and backend systems integrated with intelligent workflow automation (n8n). Extensive experience in agentic AI development leveraging CrewAI, LangGraph, and AutoGen frameworks. Skilled in designing custom LLM pipelines, vector databases, and multi-agent coordination systems to streamline complex business workflows. Committed to clean architecture, performance optimization, and premium user experiences.
+CLIENT SERVICES & SOLUTIONS OFFERED:
+1. AI Agents & Intelligent Systems (LangGraph, CrewAI, AutoGen, RAG):
+   - Custom multi-agent workflows for automated research, lead qualification, customer support triage, and internal decision support.
+   - Vector database integration (ChromaDB, Pinecone) and custom LLM pipelines (OpenAI, DeepSeek, Claude).
+2. n8n Workflow Automation & Business Integrations:
+   - End-to-end business process automation connecting Gmail, Google Sheets, Slack, Telegram, CRMs, and databases via webhooks & REST/GraphQL APIs.
+   - Examples: Automated invoice processing & Slack approvals, AI customer support ticket triage, content generation & publishing pipelines.
+3. Full Stack Web Development (React.js, Node.js, Python FastAPI):
+   - Production-ready SaaS MVPs, client portals, dashboards, and scalable backend APIs with PostgreSQL, MySQL, MongoDB, or Supabase.
+4. Cross-Platform Mobile App Development (Flutter & Dart):
+   - Polished iOS and Android apps with Firebase, clean state management (Provider, Bloc), and integrated AI/ML features.
 
-SKILLS     
+HOW WE WORK (ENGAGEMENT PROCESS):
+- Step 1: Discovery & Scope — Free initial consultation to understand your bottleneck, define technical architecture, and agree on clear milestones or a monthly retainer.
+- Step 2: Rapid Build & Demos — Weekly working demos and transparent progress updates.
+- Step 3: Launch & Handover — Production deployment, clean documentation, and post-launch support.
+- Hiring Channels: Direct contract (invoice), Upwork, or Fiverr. Typical response time is within 24 hours.
 
+CORE TECH STACK:
 • AI Engineering & Agentic Systems: LangGraph, CrewAI, AutoGen, OpenAI & DeepSeek APIs, Prompt Engineering, Vector Databases (ChromaDB, Pinecone, CLIP embeddings), LangSmith.
 • Workflow Automation & Integration: n8n Workflow Automation (Gmail, Google Sheets, Slack, Telegram APIs), Webhook integration, REST & GraphQL APIs, custom scripting.
 • Backend & Databases: Python (FastAPI, Django), Node.js (Express, Fastify), SQL (PostgreSQL, MySQL), NoSQL (MongoDB, Redis, Firebase/Supabase).
-• Mobile Development: Flutter, Dart, Android (Java), Responsive UI/UX (Figma), Clean Architecture, State Management (Provider, Bloc), Google ML Kit.
-• Tools & Methodologies: Agile/Scrum, Git/GitHub CI-CD, Docker, AWS (EC2, S3, RDS), Vercel.
+• Frontend & Mobile: React.js, Next.js, Flutter, Dart, Clean Architecture, Responsive UI/UX.
+• DevOps & Cloud: Git/GitHub CI-CD, Docker, AWS (EC2, S3, RDS), Vercel.
 
-PERSONAL PROJECTS      
-
+SELECTED CLIENT-READY CASE STUDIES & PROJECTS:
 Agentic AI & LLMs:
-• Autonomous Job Search Agent (LangGraph): Developed a multi-stage LangGraph agent in Python that automatically scans job boards, evaluates roles using vector similarity against my profile, drafts customized cover letters tailored to the job description, and sends matching alerts to a Slack channel for instant application.
-• Medical Research Intelligence System (CrewAI): Architected a multi-agent AI system with six specialized agents utilizing CrewAI and DeepSeek to automate medical literature analysis. Fetches data from PubMed & Semantic Scholar, extracts key insights, performs citation mapping, and generates detailed reports.
-• Financial Market Analysis System (CrewAI): Created a financial analysis crew utilizing specialized agents to gather stock data, analyze market sentiment, and generate structured investment recommendations.
+• Autonomous Job Search Agent (LangGraph): Multi-stage LangGraph agent in Python that scans boards, evaluates matches via vector similarity, drafts tailored cover letters, and sends Slack alerts.
+• Medical Research Intelligence System (CrewAI): Six-agent CrewAI + DeepSeek system automating literature analysis from PubMed & Semantic Scholar with citation mapping and structured reports.
+• Financial Market Analysis System (CrewAI): Multi-agent crew gathering stock data, analyzing market sentiment, and generating structured investment insights.
 
 Workflow Automation (n8n):
-• AI Invoice Processing & Approval Workflow: Designed a robust n8n workflow for automated accounts payable. Watches Gmail for bills, extracts schema-validated invoice data using a GPT-4o-mini agent, checks for duplicates, and routes invoices dynamically based on amount for multi-level Slack approvals.
-• Kids Story Generation & Publishing Pipeline: Built an end-to-end autonomous publishing pipeline in n8n. Generates stories with Claude, translates them to Urdu, creates voice audio using TTS, generates illustrations using DALL-E 3, uploads assets to Google Drive, and notifies Slack and Gmail.
-• AI-Driven Customer Support & Ticket Triage Agent: Built a support ticket routing and automation workflow in n8n. Classifies tickets by intent, runs vector database lookups for knowledge retrieval, drafts responses, and routes tickets to appropriate Slack channels.
+• AI Invoice Processing & Approval Workflow: Watches Gmail for bills, extracts schema-validated invoice data via GPT-4o-mini, checks duplicates, and routes multi-level Slack approvals.
+• Kids Story Generation & Publishing Pipeline: End-to-end n8n pipeline generating stories with Claude, translating, creating TTS voice audio, generating illustrations with DALL-E 3, and publishing assets to Google Drive & Slack.
+• AI-Driven Customer Support & Ticket Triage Agent: Classifies incoming support tickets by intent, runs vector DB knowledge retrieval, drafts responses, and routes to Slack.
 
-Mobile Development:
-• Idea Presentation Platform (Idea Press): Engineered an AI-powered platform for idea presentation, automated evaluation, and market potential assessment using Flutter and custom-trained NLP models.
-• Image Detection System App (Scanova): Built a real-time object detection application using Google ML Kit with Flutter for camera and gallery-based image analysis.
-• Fit Body Fitness App: Developed a comprehensive fitness tracking application featuring workout plans, diet monitoring, and goal management with Provider state management.
-• Café Shop App: Designed an e-commerce café ordering application with product catalog, cart management, and checkout functionality.
+Mobile & Web Development:
+• Idea Presentation Platform (Idea Press): AI-powered idea evaluation and market potential assessment platform using Flutter and NLP models.
+• Image Detection System App (Scanova): Real-time object detection mobile app using Google ML Kit and Flutter.
+• Fit Body Fitness App & Café Shop App: Full-featured Flutter apps with diet/workout tracking, e-commerce catalog, cart, and checkout.
 
-EDUCATION   
+LIVE SHIPPED PRODUCTS & APPS:
+• Daro (Google Play): Private voice diary & audio journal with biometric lock and mood tracking.
+• Geo Silent (Google Play): GPS geofencing & schedule-based automatic silent/DND Android app.
+• ScanVault (Google Play): Privacy-first QR & barcode scanner with smart actions and QR generator.
+• BlueNov (bluenov.me): Serialized webnovel reading platform with custom reader UI.
+• MediSynx EHR (ehrsystem-rho.vercel.app): Electronic Health Records platform with an A2A Voice Assistant, instant guest booking, and HD Telehealth.
+• Humanify AI (humanifyai-psi.vercel.app): AI portrait realism engine restoring natural skin texture and film warmth.
+• ToolFlow (toolflow.tech): Privacy-first browser image compression, WebP conversion, and PDF suite.
+• GridSnap Studio (gridsnap.studio): Time card, lunch break, overtime & pay calculator with PDF/CSV export.
+• Tâm Tâm Miami (tam-tam-ten.vercel.app) & Cure Cafe (cure-cafe.vercel.app): High-converting hospitality & restaurant web platforms.
+• Perfect Shine 305 (perfect-shine305-mobile-auto-detail.vercel.app): High-converting mobile car detailing service website in Miami with instant booking.
 
-HITEC University Taxila                                                                                                              Taxila Cantt, Pk  
-Bachelor of Sciences in Software Engineering                                                Expected Graduation: July 2026 
-Cumulative GPA: 2.96/4.00   
-
-CERTIFICATIONS   
-
-AI Engineer for Data Scientists Associate                                                                                                 DataCamp 
-Credential ID: AEDS0015371531706                      From: Feb 2026     -   March 2026 
-
-Prompt Engineering with the OpenAI API                                                                                                 DataCamp 
-                                        From: Jan 2026    -          Feb 2026 
-   
-
-ADDITIONAL  
-
-• Languages : Urdu(native), English(fluent)  
-• Interest: Traveling, Cricket and Exploring Emerging Technologies
+CREDENTIALS:
+• B.S. in Software Engineering — HITEC University Taxila
+• AI Engineer for Data Scientists Associate (DataCamp)
+• Prompt Engineering with the OpenAI API (DataCamp)
+• Languages: English (fluent), Urdu (native)
 `;
